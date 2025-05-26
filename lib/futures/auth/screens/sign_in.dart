@@ -10,14 +10,22 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(right: 20, left: 20, top: 20),
         child: Column(
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [Text("data"), SizedBox(width: 10), Text("data")],
+              children: [
+                Image.asset(
+                  "assets/images/logo.png",
+                  height: 40,
+                  width: 250,
+                  fit: BoxFit.cover,
+                ),
+                SizedBox(width: 10),
+              ],
             ),
           ],
         ),
