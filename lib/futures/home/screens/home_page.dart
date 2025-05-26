@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../logic/home_color.dart';
+import '../widget/home_search_bar.dart';
+import '../widget/home_tupper_text.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,27 +20,33 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: Column(
           children: [
-            Container(
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: ListTile(
-                title: Text("hi".tr),
-                subtitle: Text("welcome".tr,style: TextStyle(fontSize: 30),),
-              trailing:Stack(
+            HomeTupperText(),
+            HomeSearchBar(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
                 children: [
-                  Icon(Icons.notifications,size: 30,),
-                  Positioned(
-                    right: 0,
-                      child: Icon(Icons.circle,color: Colors.green,size: 15,))
+                  SizedBox(height: 10),
+                  Row(
+                    children: [
+                      Text("now_playing".tr,style: TextStyle(fontSize: 25 ,fontWeight: FontWeight.bold),),
+                      Spacer(),
+                      Text("see_all".tr,),
+                    ],
+                  ),
+                  // PageView(children: [
+                  //
+                  // ],)
                 ],
-              ),),
-              
-                
-
-            ),
+              ),
+            )
           ],
         ),
       ),
     );
   }
 }
+
+
+
+
