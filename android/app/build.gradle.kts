@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.movie_ticket_booging"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = "28.1.13356709"
+    ndkVersion = "29.0.13113456"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
