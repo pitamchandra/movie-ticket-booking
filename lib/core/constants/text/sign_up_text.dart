@@ -1,7 +1,7 @@
 Map<String, String> signupTextEn = {
   "sign_up": "Sign up  ",
   "continue": "Continue",
-  "or_continue_with ": "Or Continue with",
+  "or_continue_with": "Or Continue with",
   "facebook": "Facebook ",
   "google": "Google",
   "privacy_policy":
