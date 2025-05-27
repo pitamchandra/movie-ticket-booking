@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movie_ticket_booging/core/utils/theme_changer.dart';
 import 'package:movie_ticket_booging/futures/auth/screens/confirm_otp.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_buttom.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_socalmedia_buttom.dart';
@@ -12,8 +13,7 @@ class SignUP extends StatefulWidget {
 }
 
 class _SignUPState extends State<SignUP> {
-  var isCheck = false.obs;
-  bool obscureText = true;
+  ThemeChanger _themeController = Get.put(ThemeChanger());
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -71,11 +71,25 @@ class _SignUPState extends State<SignUP> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Container(width: 116, height: 1, color: Colors.white),
+                Container(
+                  width: 116,
+                  height: 1,
+                  color:
+                      _themeController.isDarkMode == false
+                          ? Colors.black
+                          : Colors.white,
+                ),
                 SizedBox(width: 5),
                 Text("or_continue_with".tr, style: TextStyle(fontSize: 16)),
                 SizedBox(width: 5),
-                Container(width: 116, height: 1, color: Colors.white),
+                Container(
+                  width: 116,
+                  height: 1,
+                  color:
+                      _themeController.isDarkMode == false
+                          ? Colors.black
+                          : Colors.white,
+                ),
               ],
             ),
             SizedBox(height: screenHeight * 0.02),
@@ -99,7 +113,14 @@ class _SignUPState extends State<SignUP> {
               ),
             ),
             SizedBox(height: screenHeight * 0.05),
-            Container(width: 153, height: 5, color: Colors.white),
+            Container(
+              width: 153,
+              height: 5,
+              color:
+                  _themeController.isDarkMode == false
+                      ? Colors.black
+                      : Colors.white,
+            ),
           ],
         ),
       ),

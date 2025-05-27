@@ -12,7 +12,8 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  ThemeChanger themeController = Get.put(ThemeChanger());
+  ThemeChanger _themeController = Get.put(ThemeChanger());
+  final RxString selectedLanguage = 'english'.obs;
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -39,7 +40,9 @@ class _SignInState extends State<SignIn> {
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      languageChangeBottomsheet(context, screenHeight);
+                    },
                     child: Text("english".tr),
                   ),
                 ),
@@ -51,8 +54,8 @@ class _SignInState extends State<SignIn> {
               children: [
                 Image.asset(
                   "assets/images/Sign-in.png",
-                  height: 330,
-                  width: 330,
+                  height: 300,
+                  width: 300,
                   fit: BoxFit.cover,
                 ),
                 SizedBox(height: screenHeight * 0.01),
@@ -89,12 +92,132 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 SizedBox(height: screenHeight * 0.05),
-                Container(width: 153, height: 5, color: Colors.white),
+                Container(
+                  width: 153,
+                  height: 5,
+                  color:
+                      _themeController.isDarkMode == false
+                          ? Colors.black
+                          : Colors.white,
+                ),
               ],
             ),
           ],
         ),
       ),
     );
+  }
+
+  Future<dynamic> languageChangeBottomsheet(
+    BuildContext context,
+    double screenHeight,
+  ) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          padding: EdgeInsets.all(16),
+          height: screenHeight * 0.5,
+          width: double.infinity,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: screenHeight * 0.02),
+              Text(
+                'choose_language'.tr,
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
+              ),
+              SizedBox(height: screenHeight * 0.01),
+              Text(
+                'which_language_do_use'.tr,
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
+              ),
+              SizedBox(height: screenHeight * 0.01),
+              LanguageTile(
+                value: 'english',
+                label: 'English',
+                selectedLanguage: selectedLanguage,
+              ),
+              Divider(color: Colors.grey),
+              LanguageTile(
+                value: 'vietnamese',
+                label: 'Vietnamese',
+                selectedLanguage: selectedLanguage,
+              ),
+              SizedBox(height: screenHeight * 0.1),
+              CustomButton(
+                buttonText: "use_english".tr,
+                color: Color(0xffFCC434),
+                onPressed: () {},
+                textColor: Colors.black,
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
+
+class LanguageTile extends StatelessWidget {
+  final String value;
+  final String label;
+  final RxString selectedLanguage;
+  final VoidCallback? onTap;
+
+  const LanguageTile({
+    super.key,
+    required this.value,
+    required this.label,
+    required this.selectedLanguage,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      bool isSelected = selectedLanguage.value == value;
+
+      return ListTile(
+        title: Text(
+          label,
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+            color: isSelected ? Colors.amber : Colors.white,
+          ),
+        ),
+        trailing: Container(
+          width: 24,
+          height: 24,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: isSelected ? Colors.amber : Colors.white,
+              width: 2,
+            ),
+          ),
+          child:
+              isSelected
+                  ? Center(
+                    child: Container(
+                      width: 12,
+                      height: 12,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.amber,
+                      ),
+                    ),
+                  )
+                  : SizedBox(),
+        ),
+        onTap: () {
+          selectedLanguage.value = value;
+          if (onTap != null) {
+            onTap!();
+          }
+        },
+      );
+    });
   }
 }
