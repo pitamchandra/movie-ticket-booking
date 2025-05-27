@@ -11,6 +11,5 @@ class ThemeChanger extends GetxController {
     isDarkMode.value = !isDarkMode.value;
     update();
   }
-
   ThemeData get themeMode => !isDarkMode.value ? lightMode : darkMode;
 }

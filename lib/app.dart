@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:movie_ticket_booging/core/utils/theme_changer.dart';
 import 'package:movie_ticket_booging/routes/route.dart';
 
+import 'binding.dart';
 import 'core/utils/text_translation.dart';
 
 class MyApp extends StatelessWidget {
@@ -13,6 +14,7 @@ class MyApp extends StatelessWidget {
     ThemeChanger themeChanger = Get.put(ThemeChanger());
     return Obx(() {
       return GetMaterialApp(
+        initialBinding: BindingController(),
         translations: AppTranslations(),
         locale: Locale('en'),
         theme: themeChanger.themeMode,
