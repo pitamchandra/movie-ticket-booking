@@ -14,12 +14,10 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   ThemeChanger _themeController = Get.put(ThemeChanger());
   final RxString selectedLanguage = 'english'.obs;
-
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(right: 20, left: 20, top: 20),
@@ -56,8 +54,8 @@ class _SignInState extends State<SignIn> {
               children: [
                 Image.asset(
                   "assets/images/Sign-in.png",
-                  height: 330,
-                  width: 330,
+                  height: 300,
+                  width: 300,
                   fit: BoxFit.cover,
                 ),
                 SizedBox(height: screenHeight * 0.01),
