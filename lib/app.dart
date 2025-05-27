@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       return GetMaterialApp(
         translations: AppTranslations(),
         locale: Locale('en'),
+        fallbackLocale: Locale("bn"),
         theme: themeChanger.themeMode,
         initialRoute: AppRoutes.initial,
         getPages: AppRoutes.routes,

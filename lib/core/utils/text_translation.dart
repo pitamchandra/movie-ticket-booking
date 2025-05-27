@@ -3,6 +3,7 @@ import 'package:movie_ticket_booging/core/constants/text/confrim_otp.dart';
 import 'package:movie_ticket_booging/core/constants/text/home_text.dart';
 import 'package:movie_ticket_booging/core/constants/text/sign_in_text.dart';
 import 'package:movie_ticket_booging/core/constants/text/sign_up_text.dart';
+import 'package:movie_ticket_booging/core/constants/text/username_text.dart';
 
 class AppTranslations extends Translations {
   @override
@@ -12,12 +13,14 @@ class AppTranslations extends Translations {
       ...signinTextEn,
       ...signupTextEn,
       ...confirmotpTextEn,
+      ...userNameTextEn,
     },
     "bn": {
       ...homeTextBn,
       ...signinTextBn,
       ...signupTextBn,
       ...confirmotpTextBn,
+      ...userNameTextBn,
     },
   };
 }
