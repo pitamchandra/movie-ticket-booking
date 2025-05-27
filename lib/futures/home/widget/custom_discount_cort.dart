@@ -12,7 +12,8 @@ class CustomDiscountCort extends StatelessWidget {
     final width = size.width;
     final height = size.height;
 
-    return Column(
+    return
+      Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         CustomSeeAllButton(text: "discount".tr),
