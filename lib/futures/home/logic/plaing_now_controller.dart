@@ -17,7 +17,7 @@ class PlayingMovieController extends GetxController {
 
  void startAutoScrollBanner() {
     try {
-      _autoScrollTimer = Timer.periodic(Duration(seconds: 60), (timer) {
+      _autoScrollTimer = Timer.periodic(Duration(seconds: 1), (timer) {
         if (_pageController.hasClients) {
           currentPage++;
           if (currentPage >= loopedList.length) {
