@@ -45,9 +45,11 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
                       itemBuilder: (context, index) {
                         final movie = playingMovie.loopedList[index];
                         return Column(
+                          mainAxisSize: MainAxisSize.max,
                           children: [
                             Container(
                               height: height*0.5,
+                              width: width,
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(20),
                                 child: Image.asset(
@@ -79,7 +81,6 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
                               ],
                             ),
                             SizedBox(height: height*0.01,),
-
                           ],
                         );
                       },
@@ -113,13 +114,6 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
 
           ],
         )
-
     );
-  }
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    _playingMovie.startAutoScrollBanner();
   }
 }
