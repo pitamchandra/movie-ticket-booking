@@ -12,7 +12,7 @@ class CustomSocialButton extends StatelessWidget {
     required this.imagePath,
     required this.text,
     required this.onPressed,
-    this.backgroundColor = Colors.black,
+    this.backgroundColor = const Color(0xFF1A1A1A),
     this.textColor = Colors.white,
   });
 

@@ -43,10 +43,14 @@ class _ConfirmOtpState extends State<ConfirmOtp> {
                 color: Color(0xffFCC434),
               ),
             ),
-            SizedBox(height: screenHeight * 0.02),
+            SizedBox(height: screenHeight * 0.01),
             Text(
               "otp_details".tr,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: Color(0xFFB3B3B3),
+              ),
             ),
             SizedBox(height: screenHeight * 0.02),
             PinCodeTextField(
@@ -115,7 +119,7 @@ class _ConfirmOtpState extends State<ConfirmOtp> {
             Align(
               alignment: Alignment.bottomRight,
               child: Text(
-                "0.59",
+                "00.59",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
               ),
             ),

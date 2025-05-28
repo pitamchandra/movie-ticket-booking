@@ -30,7 +30,7 @@ class _SignUPState extends State<SignUP> {
         ),
         title: Text(
           "sign_up".tr,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
+          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
         ),
       ),
       body: Padding(
@@ -43,15 +43,15 @@ class _SignUPState extends State<SignUP> {
               child: TextFormField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: InputDecoration(
-                  hintText: "(704) 555-0127",
-                  prefixIcon: Icon(Icons.phone),
+                  hintText: "7045550127".tr,
+                  prefixIcon: Icon(Icons.phone, size: 20),
                 ),
                 keyboardType: TextInputType.number,
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
-                    return "Phone number is required";
+                    return "enter_your_username".tr;
                   } else if (!RegExp(r'^[0-9]{7,15}$').hasMatch(value)) {
-                    return "Please enter a valid phone number (7-15 digits)";
+                    return "valid_phone_number".tr;
                   } else {
                     return null;
                   }
@@ -80,7 +80,10 @@ class _SignUPState extends State<SignUP> {
                           : Colors.white,
                 ),
                 SizedBox(width: 5),
-                Text("or_continue_with".tr, style: TextStyle(fontSize: 16)),
+                Text(
+                  "or_continue_with".tr,
+                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                ),
                 SizedBox(width: 5),
                 Container(
                   width: 116,
@@ -106,10 +109,13 @@ class _SignUPState extends State<SignUP> {
               onPressed: () {},
             ),
             SizedBox(height: screenHeight * 0.03),
-            Center(
-              child: Text(
-                "privacy_policy".tr,
-                style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
+            Text(
+              textAlign: TextAlign.center,
+              "privacy_policy".tr,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                color: Color(0xFFB3B3B3),
               ),
             ),
             SizedBox(height: screenHeight * 0.05),
