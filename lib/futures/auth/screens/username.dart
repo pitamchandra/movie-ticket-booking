@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_ticket_booging/core/utils/theme_changer.dart';
+import 'package:movie_ticket_booging/futures/home/widget/custom_bottom_navigation_bar.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_buttom.dart';
 
 class Username extends StatefulWidget {
@@ -67,7 +68,9 @@ class _UsernameState extends State<Username> {
             CustomButton(
               buttonText: "done".tr,
               color: Color(0xffFCC434),
-              onPressed: () {},
+              onPressed: () {
+                Get.to(CustomBottomNavigationBar());
+              },
               textColor: Colors.black,
             ),
 

@@ -23,10 +23,20 @@ class CustomButton extends StatelessWidget {
         backgroundColor: color,
         minimumSize: const Size(398, 56),
         maximumSize: const Size(398, 56),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(64)),
+        shape: RoundedRectangleBorder(
+          side: BorderSide(width: 1, color: Colors.white),
+          borderRadius: BorderRadius.circular(64),
+        ),
       ),
       onPressed: onPressed,
-      child: Text(buttonText, style: TextStyle(fontSize: 20, color: textColor)),
+      child: Text(
+        buttonText,
+        style: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          color: textColor,
+        ),
+      ),
     );
   }
 }
