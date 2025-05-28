@@ -43,15 +43,15 @@ class _SignUPState extends State<SignUP> {
               child: TextFormField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 decoration: InputDecoration(
-                  hintText: "(704) 555-0127",
+                  hintText: "7045550127".tr,
                   prefixIcon: Icon(Icons.phone, size: 20),
                 ),
                 keyboardType: TextInputType.number,
                 validator: (String? value) {
                   if (value == null || value.isEmpty) {
-                    return "Phone number is required";
+                    return "enter_your_username".tr;
                   } else if (!RegExp(r'^[0-9]{7,15}$').hasMatch(value)) {
-                    return "Please enter a valid phone number (7-15 digits)";
+                    return "valid_phone_number".tr;
                   } else {
                     return null;
                   }
