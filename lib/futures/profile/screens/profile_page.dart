@@ -20,7 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
         padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
         child: Column(
           children: [
-            SizedBox(height: screenHeight * 0.06),
+            SizedBox(height: screenHeight * 0.07),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +81,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ],
             ),
-            SizedBox(height: screenHeight * 0.05),
+            SizedBox(height: screenHeight * 0.04),
             Expanded(
               child: ListView(
                 children: [
