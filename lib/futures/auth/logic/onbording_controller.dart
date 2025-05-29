@@ -3,18 +3,22 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:movie_ticket_booging/futures/auth/data/onbording_image.dart';
 
-import '../data/home_image.dart';
-
-class PlayingMovieController extends GetxController {
+class OnbordingController extends GetxController {
   int currentPage = 0;
   Timer? _autoScrollTimer;
+
   final PageController _pageController = PageController();
   PageController get pageController => _pageController;
-  List<Map<String, dynamic>> loopedList = List.generate(
-    100,
+
+  //List<Map<String, dynamic>> get loopedList => OnbordingImage.onbordingplaylist;
+
+  List<Map<String, dynamic>> get loopedList => List.generate(
+    10,
     (index) =>
-        HomeImage.palingMovieList[index % HomeImage.palingMovieList.length],
+        OnbordingImage.onbordingplaylist[index %
+            OnbordingImage.onbordingplaylist.length],
   );
 
   void startAutoScrollBanner() {
@@ -42,17 +46,23 @@ class PlayingMovieController extends GetxController {
     _autoScrollTimer?.cancel();
   }
 
-  @override
-  void onClose() {
-    stopAutoScrollBanner();
-    _pageController.dispose();
-    super.onClose();
+  void updatePage(int index) {
+    currentPage = index % loopedList.length;
+    update();
   }
 
   @override
   void onInit() {
     super.onInit();
 
+    startAutoScrollBanner();
     loopedList;
+  }
+
+  @override
+  void onClose() {
+    stopAutoScrollBanner();
+    _pageController.dispose();
+    super.onClose();
   }
 }
