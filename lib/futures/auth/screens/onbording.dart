@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:movie_ticket_booging/core/utils/theme_changer.dart';
 import 'package:movie_ticket_booging/futures/auth/screens/sign_in.dart';
 import 'package:movie_ticket_booging/futures/auth/screens/sign_up.dart';
+import 'package:movie_ticket_booging/futures/auth/widget/onbording_banner.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_buttom.dart';
 
 class Onbording extends StatefulWidget {
@@ -80,26 +81,11 @@ class _OnbordingState extends State<Onbording> {
                 ),
               ],
             ),
-            SizedBox(height: screenHeight * 0.05),
+            SizedBox(height: screenHeight * 0.04),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                  "assets/images/Sign-in.png",
-                  height: 330,
-                  width: 330,
-                  fit: BoxFit.cover,
-                ),
-                SizedBox(height: screenHeight * 0.01),
-                Text(
-                  "mBooking_hello!".tr,
-                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
-                ),
-                SizedBox(height: screenHeight * 0.01),
-                Text(
-                  "enjoy_your_favorite_movies".tr,
-                  style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-                ),
+                OnbordingBanner(),
                 SizedBox(height: screenHeight * 0.04),
                 CustomButton(
                   buttonText: "sign_in".tr,
