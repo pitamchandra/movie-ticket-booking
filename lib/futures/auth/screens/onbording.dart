@@ -81,7 +81,7 @@ class _OnbordingState extends State<Onbording> {
                 ),
               ],
             ),
-            SizedBox(height: screenHeight * 0.05),
+            SizedBox(height: screenHeight * 0.04),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
