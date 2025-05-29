@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:movie_ticket_booging/futures/home/screens/details_page.dart';
+import 'package:movie_ticket_booging/futures/details_page/screens/details_page.dart';
 
 import '../data/home_image.dart';
 import '../logic/plaing_now_controller.dart';

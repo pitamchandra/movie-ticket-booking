@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../logic/home_color_controller.dart';
 import '../logic/plaing_now_controller.dart';
 import '../widget/custom_bottom_navigation_bar.dart';
