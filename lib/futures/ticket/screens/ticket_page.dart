@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movie_ticket_booging/futures/payment_page/screen/movie_ticket_page.dart';
 import 'package:movie_ticket_booging/futures/ticket/logic/ticket_controler.dart';
 
 class TicketPage extends StatefulWidget {
@@ -30,91 +31,99 @@ class _TicketPageState extends State<TicketPage> {
           padding: const EdgeInsets.all(16),
           itemBuilder: (context, index) {
             final ticket = _ticketController.tickets[index];
-            return Container(
-              margin: const EdgeInsets.only(bottom: 16),
-              decoration: BoxDecoration(
-                color: Color(0xFF1C1C1C),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                children: [
-                  ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(12),
-                      bottomLeft: Radius.circular(12),
-                    ),
-                    child: Image.asset(
-                      ticket.imageUrl,
-                      width: 100,
-                      height: 140,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 12,
-                        vertical: 12,
+            return InkWell(
+              onTap: (){
+                goToPaymentPage();
+              },
+              child: Container(
+                margin: const EdgeInsets.only(bottom: 16),
+                decoration: BoxDecoration(
+                  color: Color(0xFF1C1C1C),
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Row(
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(12),
+                        bottomLeft: Radius.circular(12),
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            ticket.title,
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
+                      child: Image.asset(
+                        ticket.imageUrl,
+                        width: 100,
+                        height: 140,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 12,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              ticket.title,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          SizedBox(height: screenHeight * 0.01),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.access_time,
-                                color: Colors.white54,
-                                size: 16,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                ticket.duration,
-                                style: const TextStyle(
+                            SizedBox(height: screenHeight * 0.01),
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.access_time,
                                   color: Colors.white54,
-                                  fontSize: 14,
+                                  size: 16,
                                 ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: screenHeight * 0.01),
-                          Row(
-                            children: [
-                              const Icon(
-                                Icons.location_on,
-                                color: Colors.white54,
-                                size: 16,
-                              ),
-                              const SizedBox(width: 4),
-                              Text(
-                                ticket.location,
-                                style: const TextStyle(
+                                const SizedBox(width: 4),
+                                Text(
+                                  ticket.duration,
+                                  style: const TextStyle(
+                                    color: Colors.white54,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: screenHeight * 0.01),
+                            Row(
+                              children: [
+                                const Icon(
+                                  Icons.location_on,
                                   color: Colors.white54,
-                                  fontSize: 14,
+                                  size: 16,
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                                const SizedBox(width: 4),
+                                Text(
+                                  ticket.location,
+                                  style: const TextStyle(
+                                    color: Colors.white54,
+                                    fontSize: 14,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             );
           },
         );
       }),
     );
+  }
+  void goToPaymentPage(){
+    Get.to(MovieTicketPage());
   }
 }

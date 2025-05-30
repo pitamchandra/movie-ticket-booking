@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:movie_ticket_booging/futures/home/data/home_image.dart';
 import 'package:movie_ticket_booging/futures/home/widget/custom_see_all_button.dart';
 
+import '../../details_page/screens/details_page.dart';
 import '../logic/plaing_now_controller.dart';
 
 class CustomDiscountCort extends StatelessWidget {
@@ -31,14 +32,19 @@ class CustomDiscountCort extends StatelessWidget {
                 },
                 itemBuilder: (context, index) {
                   final movie = HomeImage.palingMovieList[index];
-                  return Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Image.asset(
-                        movie['image']!,
-                        width: width,
-                        fit: BoxFit.cover,
+                  return InkWell(
+                    onTap: (){
+                      goToDetailsPage(movie);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset(
+                          movie['image']!,
+                          width: width,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
                   );
@@ -49,5 +55,8 @@ class CustomDiscountCort extends StatelessWidget {
         ),
       ],
     );
+  }
+  void goToDetailsPage(movie) {
+    Get.to(DetailsPage(movie: movie,));
   }
 }
