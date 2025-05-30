@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 import 'package:get/get.dart';
+
 import '../data/home_image.dart';
 import '../logic/plaing_now_controller.dart';
 import 'custom_see_all_button.dart';
+
 
 class PlayingMoviePageView extends StatefulWidget {
   const PlayingMoviePageView({super.key});
