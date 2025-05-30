@@ -1,15 +1,23 @@
 import 'package:flutter/material.dart';
-class SelectSeat extends StatefulWidget {
-  const SelectSeat({super.key});
-  @override
-  State<SelectSeat> createState() => _SelectSeatState();
-}
-class _SelectSeatState extends State<SelectSeat> {
+import 'package:get/get.dart';
+import 'package:movie_ticket_booging/futures/details_page/logic/select_seat_controller.dart';
+import 'package:movie_ticket_booging/futures/select_seat/widget/custom_select_seat_list.dart';
+
+import '../widget/custom_seat_divider.dart';
+class SelectSeat extends StatelessWidget {
+  SelectSeat({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Container(),
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("Select Seat"),
+      ),
+      body: Column(
+        children: [
+          CustomSeatDivider(),
+          CustomSelectSeatList()
+        ],
       ),
     );
   }

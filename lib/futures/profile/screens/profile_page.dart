@@ -9,7 +9,8 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  bool faceIdEnabled = true;
+  bool _switchValue = true;
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -19,7 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
         padding: const EdgeInsets.only(top: 20, right: 20, left: 20),
         child: Column(
           children: [
-            SizedBox(height: screenHeight * 0.05),
+            SizedBox(height: screenHeight * 0.06),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,27 +46,28 @@ class _ProfilePageState extends State<ProfilePage> {
                     SizedBox(height: 5),
                     Row(
                       children: [
-                        Icon(Icons.phone, size: 20),
+                        Icon(Icons.phone, size: 20, color: Color(0xFFDEDEDE)),
                         SizedBox(width: 10),
                         Text(
                           "7045550127".tr,
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 14,
+                            color: Color(0xFFDEDEDE),
                           ),
                         ),
                       ],
                     ),
-
                     Row(
                       children: [
-                        Icon(Icons.email, size: 20),
+                        Icon(Icons.email, size: 20, color: Color(0xFFDEDEDE)),
                         SizedBox(width: 10),
                         Text(
                           "angelina@example.com",
                           style: TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 14,
+                            color: Color(0xFFDEDEDE),
                           ),
                         ),
                       ],
@@ -83,31 +85,30 @@ class _ProfilePageState extends State<ProfilePage> {
             Expanded(
               child: ListView(
                 children: [
-                  Divider(),
                   _buildSettingsItem(
                     icon: Icons.confirmation_num,
                     text: "my_ticket".tr,
                     onTap: () {},
                   ),
-                  Divider(),
+                  Divider(color: Color(0xFF4A4A4A)),
                   _buildSettingsItem(
                     icon: Icons.shopping_cart,
                     text: "payment_history".tr,
                     onTap: () {},
                   ),
-                  Divider(),
+                  Divider(color: Color(0xFF4A4A4A)),
                   _buildSettingsItem(
                     icon: Icons.translate,
                     text: 'language'.tr,
                     onTap: () {},
                   ),
-                  Divider(),
+                  Divider(color: Color(0xFF4A4A4A)),
                   _buildSettingsItem(
                     icon: Icons.lock,
                     text: 'password'.tr,
                     onTap: () {},
                   ),
-                  Divider(),
+                  Divider(color: Color(0xFF4A4A4A)),
                   _buildSwitchItem(
                     icon: Icons.center_focus_strong,
                     text: "face_touch_id".tr,
@@ -132,7 +133,12 @@ class _ProfilePageState extends State<ProfilePage> {
         text,
         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
       ),
-      trailing: Icon(Icons.arrow_forward_ios, size: 32),
+      trailing: Icon(
+        Icons.arrow_forward_ios,
+        size: 24,
+        color: Color(0xFFDEDEDE),
+      ),
+
       onTap: onTap,
     );
   }
@@ -142,9 +148,13 @@ class _ProfilePageState extends State<ProfilePage> {
       leading: Icon(icon, size: 32),
       title: Text(text, style: TextStyle(fontSize: 16)),
       trailing: Switch(
-        value: true,
+        value: _switchValue,
         activeColor: Colors.amber,
-        onChanged: (bool value) {},
+        onChanged: (bool value) {
+          setState(() {
+            _switchValue = value;
+          });
+        },
       ),
     );
   }
