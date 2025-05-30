@@ -1,8 +1,28 @@
 Map<String, String> homeTextEn = {
   "hi": "Hi, Angelina 👋",
   "welcome":"Welcome back",
+  "now_playing":"Now Playing",
+  "see_all":"See All",
+ "coming_soon":"Coming Soon",
+  "discount":"Promo & Discount",
+  "service":"Services",
+  "movie_news":"Movie News",
+  "home":"Home",
+  "ticket":"Ticket",
+  "movie":"Movie",
+  "profile":"Profile",
 };
 Map<String, String> homeTextBn = {
   "hi": "হাই, অ্যাঞ্জেলিনা 👋",
   "welcome":"আবার স্বাগতম",
+  "now_playing":"এখন চলছে",
+  "see_all":"সবগুলো দেখুন",
+"coming_soon":"শীঘ্রই আসছে",
+"discount":"প্রোমো এবং ছাড়",
+"service":"সেবা",
+  "movie_news":"সিনেমার খবর",
+  "home":"হোম",
+  "ticket":"টিকিট",
+  "movie":"সিনেমা",
+  "profile":"প্রোফাইল",
 };
