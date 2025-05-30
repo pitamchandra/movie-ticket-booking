@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:movie_ticket_booging/futures/details_page/logic/select_seat_controller.dart';
 import 'package:movie_ticket_booging/futures/select_seat/widget/custom_select_seat_list.dart';
 
+import '../widget/bottom_ticket_bar.dart';
+import '../widget/custom_date_time_picer.dart';
 import '../widget/custom_seat_divider.dart';
 class SelectSeat extends StatelessWidget {
   SelectSeat({super.key});
@@ -16,9 +18,12 @@ class SelectSeat extends StatelessWidget {
       body: Column(
         children: [
           CustomSeatDivider(),
-          CustomSelectSeatList()
+          CustomSelectSeatList(),
+          CustomDateTimePicker()
+
         ],
       ),
+     bottomNavigationBar: BottomTicketBar(amount: 210000),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../logic/home_color_controller.dart';
 import '../logic/plaing_now_controller.dart';
+import '../widget/custom_bottom_navigation_bar.dart';
 import '../widget/custom_coming_soon_list_view.dart';
 import '../widget/custom_discount_cort.dart';
 import '../widget/custom_movie_news.dart';
@@ -34,8 +35,6 @@ class _HomePageState extends State<HomePage> {
               PlayingMoviePageView(),
               CustomComingSoonListView(),
               CustomDiscountCort(),
-              CustomComingSoonListView(),
-              CustomDiscountCort(),
               CustomServices(),
               CustomMovieNews(),
             ],
@@ -45,6 +44,7 @@ class _HomePageState extends State<HomePage> {
 
       // bottomNavigationBar: CustomBottomNavigationBar(),
     );
+
   }
 
   @override
