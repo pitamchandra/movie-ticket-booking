@@ -6,6 +6,7 @@ import '../data/home_image.dart';
 import '../logic/plaing_now_controller.dart';
 import 'custom_see_all_button.dart';
 
+
 class PlayingMoviePageView extends StatefulWidget {
   const PlayingMoviePageView({super.key});
   @override
