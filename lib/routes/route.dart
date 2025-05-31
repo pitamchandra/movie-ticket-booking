@@ -3,10 +3,8 @@ import 'package:movie_ticket_booging/futures/auth/screens/onbording.dart';
 
 class AppRoutes {
   static const String initial = '/';
-
   static final List<GetPage> routes = [
+    //GetPage(name: initial, page: () => PaymentPage()),
     GetPage(name: initial, page: () => Onbording()),
-
-    //GetPage(name: initial, page: () => HomePage()),
   ];
 }

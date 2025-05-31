@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
 import 'package:get/get.dart';
+import 'package:movie_ticket_booging/futures/details_page/screens/details_page.dart';
 
 import '../data/home_image.dart';
 import '../logic/plaing_now_controller.dart';
 import 'custom_see_all_button.dart';
+
 
 class PlayingMoviePageView extends StatefulWidget {
   const PlayingMoviePageView({super.key});
@@ -42,51 +44,56 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
                   },
                   itemBuilder: (context, index) {
                     final movie = playingMovie.loopedList[index];
-                    return Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Container(
-                          height: height * 0.5,
-                          width: width,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20),
-                            child: Image.asset(
-                              movie['image'],
-                              // loopedList[index],
-                              // ✅ correct image path
-                              fit: BoxFit.cover,
+                    return InkWell(
+                      onTap: (){
+                        goToDetailsPage(movie);
+                      },
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Container(
+                            height: height * 0.5,
+                            width: width,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image.asset(
+                                movie['image'],
+                                // loopedList[index],
+                                // ✅ correct image path
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(height: height * 0.01),
-                        Text(
-                          "${movie['name']}",
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        Text(
-                          "${movie['description']}",
-                          style: TextStyle(fontSize: 20),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        SizedBox(height: height * 0.01),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            StarRating(
-                              rating: 1,
-                              allowHalfRating: true,
-                              starCount: 1,
-                              color: Colors.amber,
+                          SizedBox(height: height * 0.01),
+                          Text(
+                            "${movie['name']}",
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
                             ),
-                            Text("${movie['rating']}"),
-                          ],
-                        ),
-                        SizedBox(height: height * 0.01),
-                      ],
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          Text(
+                            "${movie['description']}",
+                            style: TextStyle(fontSize: 20),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          SizedBox(height: height * 0.01),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              StarRating(
+                                rating: 1,
+                                allowHalfRating: true,
+                                starCount: 1,
+                                color: Colors.amber,
+                              ),
+                              Text("${movie['rating']}"),
+                            ],
+                          ),
+                          SizedBox(height: height * 0.01),
+                        ],
+                      ),
                     );
                   },
                 ),
@@ -120,5 +127,8 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
         ],
       ),
     );
+  }
+  void goToDetailsPage(movie) {
+    Get.to(DetailsPage(movie: movie,));
   }
 }

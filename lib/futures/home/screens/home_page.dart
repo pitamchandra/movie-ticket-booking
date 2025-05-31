@@ -35,8 +35,6 @@ class _HomePageState extends State<HomePage> {
               PlayingMoviePageView(),
               CustomComingSoonListView(),
               CustomDiscountCort(),
-              CustomComingSoonListView(),
-              CustomDiscountCort(),
               CustomServices(),
               CustomMovieNews(),
             ],
