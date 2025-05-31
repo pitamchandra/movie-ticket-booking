@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rating/flutter_rating.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:movie_ticket_booging/futures/details_page/widget/custom_bottom_sheet.dart';
 
 import '../../select_seat/screen/select_seat.dart';
 import '../../select_seat/widget/continue_button.dart';
@@ -60,13 +57,15 @@ class _DetailsPageState extends State<DetailsPage> {
           ),
         ],
       ),
-    bottomNavigationBar: ContinueButton(
-    onPressed: () {
-      goToDetailsPage();
-    // Handle continue action
-    },
-    ));
+      bottomNavigationBar: ContinueButton(
+        onPressed: () {
+          goToDetailsPage();
+          // Handle continue action
+        },
+      ),
+    );
   }
+
   void goToDetailsPage() {
     Get.to(SelectSeat());
   }

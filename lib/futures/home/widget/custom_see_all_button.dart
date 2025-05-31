@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movie_ticket_booging/futures/details_page/screens/details_page.dart';
 
 class CustomSeeAllButton extends StatelessWidget {
   String text;
@@ -18,7 +19,12 @@ class CustomSeeAllButton extends StatelessWidget {
         Spacer(),
         Row(
           children: [
-            Text("see_all".tr, style: TextStyle(color: Colors.amber)),
+            InkWell(
+              onTap: () {
+                Get.to(DetailsPage());
+              },
+              child: Text("see_all".tr, style: TextStyle(color: Colors.amber)),
+            ),
             SizedBox(width: width * 0.01),
             Icon(Icons.arrow_forward_ios, size: 15, color: Colors.amber),
           ],
