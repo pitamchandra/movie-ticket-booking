@@ -24,7 +24,6 @@ class _CustomDateTimePickerState extends State<CustomDateTimePicker> {
     return Column(
       mainAxisSize: MainAxisSize.max,
           children: [
-            SizedBox(height: height*0.01,),
             const Text(
               'Select Date & Time',
               style: TextStyle(fontSize: 22, color: Colors.white),
@@ -91,7 +90,7 @@ class _CustomDateTimePickerState extends State<CustomDateTimePicker> {
 
             // Time Scroll
             SizedBox(
-              height: height*0.045,
+              height: height*0.075,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: times.length,

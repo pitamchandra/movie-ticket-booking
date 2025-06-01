@@ -11,12 +11,14 @@ class SelectSeat extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(centerTitle: true, title: const Text("Select Seat")),
-      body: Column(
-        children: [
-          CustomSeatDivider(),
-          CustomSelectSeatList(),
-          CustomDateTimePicker(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            CustomSeatDivider(),
+            CustomSelectSeatList(),
+            CustomDateTimePicker(),
+          ],
+        ),
       ),
       bottomNavigationBar: BottomTicketBar(amount: 210000),
     );

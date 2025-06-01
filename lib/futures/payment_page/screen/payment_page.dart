@@ -20,14 +20,16 @@ class PaymentPage extends StatelessWidget {
       appBar: AppBar(title: Text("Payment"), centerTitle: true),
       body: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            CustomselectMovieByPayment(),
-            SizedBox(height: height * 0.02),
-            CustomPromoSection(),
-            PaymentMethodSection(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              CustomselectMovieByPayment(),
+              SizedBox(height: height * 0.02),
+              CustomPromoSection(),
+              PaymentMethodSection(),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CustomButton(
