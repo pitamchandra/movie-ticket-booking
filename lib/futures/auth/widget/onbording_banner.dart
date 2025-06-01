@@ -18,12 +18,12 @@ class OnbordingBanner extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
-          SizedBox(height: height * 0.01),
+
           GetBuilder<OnbordingController>(
             builder: (controller) {
               return SizedBox(
                 width: width * 0.8,
-                height: height * 0.47,
+                height: height * 0.53,
                 child: PageView.builder(
                   controller: controller.pageController,
                   itemCount: controller.loopedList.length,
@@ -44,11 +44,11 @@ class OnbordingBanner extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
-                        SizedBox(height: height * 0.01),
+                        // SizedBox(height: height * 0.01),
                         Text(
                           movie['name']!,
                           style: TextStyle(
-                            fontSize: 32,
+                            fontSize: 28,
                             fontWeight: FontWeight.w700,
                           ),
                           overflow: TextOverflow.ellipsis,
