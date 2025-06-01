@@ -48,7 +48,7 @@ class _CustomSelectSeatListState extends State<CustomSelectSeatList> {
                           child: GestureDetector(
                             onTap: () => _seatController.toggleSeat(seatLabel),
                             child:  Container(
-                                  width: 28,   // ছোট বক্স
+                                  width: 25,   // ছোট বক্স
                                   height: 30,
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(

@@ -23,13 +23,13 @@ class CustomDoctorCart extends StatelessWidget {
           builder: (playingMovie) {
             return SizedBox(
               height: height*0.1,
-              width: width*0.9,
+              width: width,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: playingMovie.loopedList.length,
                   itemBuilder: (BuildContext context, int index){
                   return SizedBox(
-                    width: width*0.4,
+                    width: width*0.45,
                     height: height*0.01,
                     child: Card(
                       color: Color(0xff1c1c1c),

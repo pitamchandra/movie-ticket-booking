@@ -12,8 +12,7 @@ class BottomTicketBar extends StatelessWidget {
     //final width = size.width;
     final height = size.height;
     return Container(
-      height: height * 0.09,
-
+      height: height * 0.1,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(24),
@@ -28,7 +27,7 @@ class BottomTicketBar extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text('Total', style: TextStyle(fontSize: 14)),
+              const Text('Total', style: TextStyle(fontSize: 10)),
               Text(
                 '${amount.toStringAsFixed(0)} VND',
                 style: const TextStyle(
