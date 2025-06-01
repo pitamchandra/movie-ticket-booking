@@ -11,7 +11,7 @@ class CustomDetailsCard extends StatelessWidget {
     final height = size.height;
     return Container(
       padding: EdgeInsets.all(1),
-      height: height*0.25,
+      height: height*0.282,
       width: width,
       child: Card(
         color: Color(0xFF1C1C1C),

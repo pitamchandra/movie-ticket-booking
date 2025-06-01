@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
 import '../../details_page/logic/select_seat_controller.dart';
 import 'Custom_color_checker.dart';
 class CustomSelectSeatList extends StatefulWidget {
@@ -23,7 +22,7 @@ class _CustomSelectSeatListState extends State<CustomSelectSeatList> {
       mainAxisSize: MainAxisSize.max,
       children: [
         SizedBox(
-          height:height*0.25 ,
+          height:height*0.40 ,
           child: Obx(
              () {
               return ListView(
@@ -49,7 +48,7 @@ class _CustomSelectSeatListState extends State<CustomSelectSeatList> {
                           child: GestureDetector(
                             onTap: () => _seatController.toggleSeat(seatLabel),
                             child:  Container(
-                                  width: 30,   // ছোট বক্স
+                                  width: 25,   // ছোট বক্স
                                   height: 30,
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(

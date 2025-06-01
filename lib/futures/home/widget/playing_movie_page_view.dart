@@ -26,7 +26,7 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
-          SizedBox(height: 10),
+          SizedBox(height: 5),
           CustomSeeAllButton(text: "now_playing".tr),
           SizedBox(height: height * 0.02),
           GetBuilder(
@@ -34,7 +34,7 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
             builder: (playingMovie) {
               return SizedBox(
                 width: width * 0.8,
-                height: height * 0.64,
+                height: height * 0.7,
                 child: PageView.builder(
                   controller: playingMovie.pageController,
                   itemCount: playingMovie.loopedList.length,

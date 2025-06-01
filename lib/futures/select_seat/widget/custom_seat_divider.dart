@@ -5,7 +5,7 @@ class CustomSeatDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container( margin: const EdgeInsets.symmetric(horizontal: 15),
-    height: 80,
+    height: 40,
     decoration: BoxDecoration(
     color: Colors.transparent,
     border: const Border(

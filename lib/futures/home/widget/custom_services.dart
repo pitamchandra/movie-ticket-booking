@@ -20,7 +20,7 @@ class CustomServices extends StatelessWidget {
           init: _playingMovie,
             builder: (playingMovie){
             return SizedBox(
-              height: height*0.17,
+              height: height*0.18,
               width: width,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,

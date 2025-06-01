@@ -21,113 +21,115 @@ class _OnbordingState extends State<Onbording> {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.height;
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.only(right: 20, left: 20, top: 20),
-        child: Column(
-          children: [
-            SizedBox(height: screenHeight * 0.05),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                RichText(
-                  text: TextSpan(
-                    text: 'MB',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                    children: [
-                      TextSpan(
-                        text: 'oO',
-                        style: TextStyle(color: Colors.amber),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.only(right: 20, left: 20, top: 20),
+          child: Column(
+            children: [
+              SizedBox(height: screenHeight * 0.05),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      text: 'MB',
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
-                      TextSpan(
-                        text: 'king',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                    ],
-                  ),
-                ),
-
-                SizedBox(width: screenWidth * 0.01),
-                Container(
-                  padding: EdgeInsets.all(5),
-                  height: 36,
-                  width: 96,
-                  decoration: BoxDecoration(
-                    border: Border.all(width: 1, color: Colors.white),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: InkWell(
-                    onTap: () {
-                      languageChangeBottomsheet(context, screenHeight);
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Icon(Icons.translate, size: 20),
-
-                        Text(
-                          "english".tr,
-                          style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                          ),
+                        TextSpan(
+                          text: 'oO',
+                          style: TextStyle(color: Colors.amber),
+                        ),
+                        TextSpan(
+                          text: 'king',
+                          style: TextStyle(color: Colors.white),
                         ),
                       ],
                     ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: screenHeight * 0.04),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                OnbordingBanner(),
-                SizedBox(height: screenHeight * 0.04),
-                CustomButton(
-                  buttonText: "sign_in".tr,
-                  color: Color(0xffFCC434),
-                  onPressed: () {
-                    Get.to(SingIn());
-                  },
-                  textColor: Colors.black,
-                ),
-                SizedBox(height: screenHeight * 0.02),
-                CustomButton(
-                  buttonText: "sign_up".tr,
-                  color: Colors.black,
-                  onPressed: () {
-                    Get.to(SignUP());
-                  },
-                  textColor: Colors.white,
-                ),
-                SizedBox(height: screenHeight * 0.03),
-                Center(
-                  child: Text(
-                    textAlign: TextAlign.center,
-                    "privacy_policy".tr,
-                    style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xFFB3B3B3),
+
+                  SizedBox(width: screenWidth * 0.01),
+                  Container(
+                    padding: EdgeInsets.all(5),
+                    height: 36,
+                    width: 96,
+                    decoration: BoxDecoration(
+                      border: Border.all(width: 1, color: Colors.white),
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: InkWell(
+                      onTap: () {
+                        languageChangeBottomsheet(context, screenHeight);
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Icon(Icons.translate, size: 20),
+
+                          Text(
+                            "english".tr,
+                            style: TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height: screenHeight * 0.05),
-                Container(
-                  width: 153,
-                  height: 5,
-                  color:
-                      _themeController.isDarkMode == false
-                          ? Colors.black
-                          : Colors.white,
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+              SizedBox(height: screenHeight * 0.04),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  OnbordingBanner(),
+                  SizedBox(height: screenHeight * 0.04),
+                  CustomButton(
+                    buttonText: "sign_in".tr,
+                    color: Color(0xffFCC434),
+                    onPressed: () {
+                      Get.to(SingIn());
+                    },
+                    textColor: Colors.black,
+                  ),
+                  SizedBox(height: screenHeight * 0.02),
+                  CustomButton(
+                    buttonText: "sign_up".tr,
+                    color: Colors.black,
+                    onPressed: () {
+                      Get.to(SignUP());
+                    },
+                    textColor: Colors.white,
+                  ),
+                  SizedBox(height: screenHeight * 0.03),
+                  Center(
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      "privacy_policy".tr,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xFFB3B3B3),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: screenHeight * 0.05),
+                  Container(
+                    width: 153,
+                    height: 5,
+                    color:
+                        _themeController.isDarkMode == false
+                            ? Colors.black
+                            : Colors.white,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -147,7 +149,7 @@ class _OnbordingState extends State<Onbording> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: screenHeight * 0.02),
+              SizedBox(height: screenHeight * 0.2),
               Text(
                 'choose_language'.tr,
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),

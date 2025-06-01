@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import '../../select_seat/screen/select_seat.dart';
 import '../../select_seat/widget/continue_button.dart';
 import '../widget/custom_details_card.dart';
@@ -8,15 +7,12 @@ import '../widget/custom_details_cinema_list_views.dart';
 import '../widget/custom_details_cover.dart';
 import '../widget/custom_details_text.dart';
 import '../widget/custom_doctor_cart.dart';
-
 class DetailsPage extends StatefulWidget {
   final dynamic movie;
   DetailsPage({super.key, this.movie});
-
   @override
   State<DetailsPage> createState() => _DetailsPageState();
 }
-
 class _DetailsPageState extends State<DetailsPage> {
   @override
   Widget build(BuildContext context) {
