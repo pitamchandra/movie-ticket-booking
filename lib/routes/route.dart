@@ -1,5 +1,4 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-
 import '../futures/payment_page/screen/payment_page.dart';
 class AppRoutes {
   static const String initial = '/';
