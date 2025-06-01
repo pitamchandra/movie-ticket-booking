@@ -1,3 +1,4 @@
+import 'package:barcode_widget/barcode_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../widget/custom_select_movie_by_payment.dart';
@@ -39,6 +40,12 @@ class MovieTicketPage extends StatelessWidget {
                   seats: 'H7, H8',
                 ),
                 TicketDetailsSection(),
+            BarcodeWidget(
+              barcode: Barcode.code128(),
+              data: 'Hello Flutter',
+              height: height*0.13,
+
+            )
 
 
               ],

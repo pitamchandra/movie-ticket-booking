@@ -18,7 +18,7 @@ class CustomMovieNews extends StatelessWidget {
         CustomSeeAllButton(text: "movie_news".tr),
         SizedBox(height: 10),
         SizedBox(
-          height: height * 0.25,
+          height: height * 0.26,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: HomeImage.palingMovieList.length,

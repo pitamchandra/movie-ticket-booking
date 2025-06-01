@@ -55,7 +55,7 @@ class TicketDetailsSection extends StatelessWidget {
                         child: Image(
                           image: NetworkImage('https://static.vecteezy.com/system/resources/previews/005/663/514/origin'
                               'al/ticket-logo-or-icon-design-vector.jpg'),fit: BoxFit.cover,
-                          height: 16,
+                          height: 20,
                         ),
                       ),
                     ),

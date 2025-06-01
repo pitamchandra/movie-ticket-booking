@@ -1,6 +1,5 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
-import 'package:movie_ticket_booging/futures/auth/screens/onbording.dart';
-
+import '../futures/auth/screens/onbording.dart';
 class AppRoutes {
   static const String initial = '/';
   static final List<GetPage> routes = [
