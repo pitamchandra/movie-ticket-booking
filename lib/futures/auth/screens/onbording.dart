@@ -50,7 +50,7 @@ class _OnbordingState extends State<Onbording> {
                       ],
                     ),
                   ),
-        
+
                   SizedBox(width: screenWidth * 0.01),
                   Container(
                     padding: EdgeInsets.all(5),
@@ -68,7 +68,7 @@ class _OnbordingState extends State<Onbording> {
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
                           Icon(Icons.translate, size: 20),
-        
+
                           Text(
                             "english".tr,
                             style: TextStyle(
@@ -149,7 +149,7 @@ class _OnbordingState extends State<Onbording> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: screenHeight * 0.02),
+              SizedBox(height: screenHeight * 0.2),
               Text(
                 'choose_language'.tr,
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),

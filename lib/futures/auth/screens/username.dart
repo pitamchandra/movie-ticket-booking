@@ -27,65 +27,67 @@ class _UsernameState extends State<Username> {
           icon: Icon(Icons.arrow_back),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: screenHeight * 0.02),
-            Text(
-              "enter_username".tr,
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.w700,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20, top: 20, right: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: screenHeight * 0.02),
+              Text(
+                "enter_username".tr,
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xffFCC434),
+                ),
+              ),
+              SizedBox(height: screenHeight * 0.02),
+              Text(
+                "lation_emoji_symbol".tr,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+              ),
+              SizedBox(height: screenHeight * 0.03),
+              Form(
+                key: _formKey,
+                child: TextFormField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  decoration: InputDecoration(hintText: "Username"),
+                  keyboardType: TextInputType.multiline,
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Enter your username";
+                    } else if (!RegExp(r'^[a-zA-Z0-9_]+$').hasMatch(value)) {
+                      return "Please enter a valid userName";
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+              ),
+              SizedBox(height: screenHeight * 0.25),
+              CustomButton(
+                buttonText: "done".tr,
                 color: Color(0xffFCC434),
-              ),
-            ),
-            SizedBox(height: screenHeight * 0.02),
-            Text(
-              "lation_emoji_symbol".tr,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-            ),
-            SizedBox(height: screenHeight * 0.03),
-            Form(
-              key: _formKey,
-              child: TextFormField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                decoration: InputDecoration(hintText: "Username"),
-                keyboardType: TextInputType.multiline,
-                validator: (String? value) {
-                  if (value == null || value.isEmpty) {
-                    return "Enter your username";
-                  } else if (!RegExp(r'^[a-zA-Z0-9_]+$').hasMatch(value)) {
-                    return "Please enter a valid userName";
-                  } else {
-                    return null;
-                  }
+                onPressed: () {
+                  Get.to(CustomBottomNavigationBar());
                 },
+                textColor: Colors.black,
               ),
-            ),
-            SizedBox(height: screenHeight * 0.25),
-            CustomButton(
-              buttonText: "done".tr,
-              color: Color(0xffFCC434),
-              onPressed: () {
-                Get.to(CustomBottomNavigationBar());
-              },
-              textColor: Colors.black,
-            ),
 
-            SizedBox(height: screenHeight * 0.25),
-            Center(
-              child: Container(
-                width: 153,
-                height: 5,
-                color:
-                    _themeController.isDarkMode == false
-                        ? Colors.black
-                        : Colors.white,
+              SizedBox(height: screenHeight * 0.25),
+              Center(
+                child: Container(
+                  width: 153,
+                  height: 5,
+                  color:
+                      _themeController.isDarkMode == false
+                          ? Colors.black
+                          : Colors.white,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
