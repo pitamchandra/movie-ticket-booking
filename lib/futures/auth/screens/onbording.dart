@@ -19,7 +19,7 @@ class _OnbordingState extends State<Onbording> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -50,8 +50,6 @@ class _OnbordingState extends State<Onbording> {
                       ],
                     ),
                   ),
-
-                  SizedBox(width: screenWidth * 0.01),
                   Container(
                     padding: EdgeInsets.all(5),
                     height: 36,
@@ -144,12 +142,12 @@ class _OnbordingState extends State<Onbording> {
       builder: (BuildContext context) {
         return Container(
           padding: EdgeInsets.all(16),
-          height: screenHeight * 0.5,
+          //height: screenHeight * 0.5,
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: screenHeight * 0.2),
+              SizedBox(height: screenHeight * 0.1),
               Text(
                 'choose_language'.tr,
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),

@@ -8,11 +8,13 @@ class NowPlayingBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return GridView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 0.55,
+        childAspectRatio: 0.48,
         crossAxisSpacing: 15,
         mainAxisSpacing: 15,
       ),
@@ -26,12 +28,12 @@ class NowPlayingBody extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               child: Image.asset(
                 movie.imageUrl,
-                height: 200,
+                height: 260,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(height: 6),
+            SizedBox(height: screenHeight * 0.01),
             Text(
               movie.title,
               maxLines: 2,
@@ -42,29 +44,29 @@ class NowPlayingBody extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: screenHeight * 0.01),
             Row(
               children: [
                 const Icon(Icons.star, color: Colors.amber, size: 14),
-                const SizedBox(width: 4),
+                SizedBox(width: screenWidth * 0.005),
                 Text(
                   movie.rating,
                   style: const TextStyle(color: Colors.white70, fontSize: 12),
                 ),
               ],
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: screenHeight * 0.005),
             Row(
               children: [
                 const Icon(Icons.access_time, color: Colors.white54, size: 14),
-                const SizedBox(width: 4),
+                SizedBox(width: screenWidth * 0.005),
                 Text(
                   movie.duration,
                   style: const TextStyle(color: Colors.white70, fontSize: 12),
                 ),
               ],
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: screenHeight * 0.005),
             Text(
               movie.action,
               style: const TextStyle(color: Colors.white70, fontSize: 12),
