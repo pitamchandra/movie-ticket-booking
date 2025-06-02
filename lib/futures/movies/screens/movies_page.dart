@@ -10,13 +10,14 @@ class MoviesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            const SizedBox(height: 20),
+            SizedBox(height: screenHeight * 0.02),
             CustomButtom(),
-            const SizedBox(height: 20),
+            SizedBox(height: screenHeight * 0.02),
             Expanded(
               child: Obx(() {
                 if (controller.selectedTab.value == 'now') {

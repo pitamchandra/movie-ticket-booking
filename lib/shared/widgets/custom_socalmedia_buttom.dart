@@ -18,10 +18,13 @@ class CustomSocialButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: 56,
+        height: screenHeight * 0.072,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(64),
@@ -30,8 +33,12 @@ class CustomSocialButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(imagePath, height: 24, width: 24),
-            const SizedBox(width: 8),
+            Image.asset(
+              imagePath,
+              height: screenHeight * 0.2,
+              width: screenWidth * 0.05,
+            ),
+            SizedBox(width: screenWidth * 0.02),
             Text(
               text,
               style: TextStyle(

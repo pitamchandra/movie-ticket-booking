@@ -19,6 +19,7 @@ class _OnbordingState extends State<Onbording> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -26,7 +27,7 @@ class _OnbordingState extends State<Onbording> {
           padding: EdgeInsets.only(right: 20, left: 20, top: 20),
           child: Column(
             children: [
-              SizedBox(height: screenHeight * 0.05),
+              SizedBox(height: screenHeight * 0.03),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -52,8 +53,8 @@ class _OnbordingState extends State<Onbording> {
                   ),
                   Container(
                     padding: EdgeInsets.all(5),
-                    height: 36,
-                    width: 96,
+                    height: screenHeight * 0.05,
+                    width: screenWidth * 0.3,
                     decoration: BoxDecoration(
                       border: Border.all(width: 1, color: Colors.white),
                       borderRadius: BorderRadius.circular(30),
@@ -85,7 +86,7 @@ class _OnbordingState extends State<Onbording> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   OnbordingBanner(),
-                  SizedBox(height: screenHeight * 0.04),
+                  SizedBox(height: screenHeight * 0.03),
                   CustomButton(
                     buttonText: "sign_in".tr,
                     color: Color(0xffFCC434),
@@ -115,10 +116,10 @@ class _OnbordingState extends State<Onbording> {
                       ),
                     ),
                   ),
-                  SizedBox(height: screenHeight * 0.05),
+                  SizedBox(height: screenHeight * 0.04),
                   Container(
-                    width: 153,
-                    height: 5,
+                    height: screenHeight * 0.003,
+                    width: screenWidth * 0.4,
                     color:
                         _themeController.isDarkMode == false
                             ? Colors.black
@@ -142,17 +143,16 @@ class _OnbordingState extends State<Onbording> {
       builder: (BuildContext context) {
         return Container(
           padding: EdgeInsets.all(16),
-          //height: screenHeight * 0.5,
+          height: screenHeight * 0.5,
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: screenHeight * 0.1),
+              SizedBox(height: screenHeight * 0.02),
               Text(
                 'choose_language'.tr,
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
               ),
-
               Text(
                 'which_language_do_use'.tr,
                 style: TextStyle(
@@ -173,7 +173,7 @@ class _OnbordingState extends State<Onbording> {
                 label: 'Vietnamese',
                 selectedLanguage: selectedLanguage,
               ),
-              SizedBox(height: screenHeight * 0.1),
+              SizedBox(height: screenHeight * 0.08),
               CustomButton(
                 buttonText: "use_english".tr,
                 color: Color(0xffFCC434),

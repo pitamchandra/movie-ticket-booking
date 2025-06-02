@@ -9,16 +9,15 @@ class CustomMovieNews extends StatelessWidget {
   const CustomMovieNews({super.key});
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final width = size.width;
-    final height = size.height;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
         CustomSeeAllButton(text: "movie_news".tr),
         SizedBox(height: 10),
         SizedBox(
-          height: height * 0.26,
+          height: screenHeight * 0.26,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: HomeImage.palingMovieList.length,
@@ -32,9 +31,9 @@ class CustomMovieNews extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Container(
-                      width: width * 0.65,
-                      height: height * 0.17,
-                      margin: EdgeInsets.all(width * 0.02),
+                      width: screenWidth * 0.65,
+                      height: screenHeight * 0.17,
+                      margin: EdgeInsets.all(screenWidth * 0.02),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: Image(

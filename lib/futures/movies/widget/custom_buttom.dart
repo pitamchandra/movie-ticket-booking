@@ -7,6 +7,8 @@ class CustomButtom extends StatelessWidget {
   final MoviesController controller = Get.put(MoviesController());
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Row(
@@ -19,8 +21,8 @@ class CustomButtom extends StatelessWidget {
                   controller.switchTab('now');
                 },
                 child: Container(
-                  height: 48,
-                  width: 195,
+                  height: screenHeight * 0.08,
+                  width: screenWidth * 0.5,
                   decoration: BoxDecoration(
                     color:
                         controller.selectedTab.value == 'now'
@@ -49,8 +51,8 @@ class CustomButtom extends StatelessWidget {
                   controller.switchTab('soon');
                 },
                 child: Container(
-                  height: 48,
-                  width: 195,
+                  height: screenHeight * 0.08,
+                  width: screenWidth * 0.5,
                   decoration: BoxDecoration(
                     color:
                         controller.selectedTab.value == 'soon'

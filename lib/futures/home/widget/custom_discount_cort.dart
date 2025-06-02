@@ -12,28 +12,28 @@ class CustomDiscountCort extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     PlayingMovieController _playingMovie = Get.find<PlayingMovieController>();
-    final size = MediaQuery.of(context).size;
-    final width = size.width;
-    final height = size.height;
-    return
-      Column(
+
+    double screenHeight = MediaQuery.of(context).size.height;
+
+    return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         CustomSeeAllButton(text: "discount".tr),
         GetBuilder(
-          init:_playingMovie ,
+          init: _playingMovie,
           builder: (playingMovie) {
             return SizedBox(
-              height: height * 0.28, // একটু বেশি রাখলে safe
+              height: screenHeight * 0.28, // একটু বেশি রাখলে safe
               child: PageView.builder(
-                itemCount:playingMovie.loopedList.length,
+                itemCount: playingMovie.loopedList.length,
                 onPageChanged: (index) {
-                  playingMovie.currentPage= index % playingMovie.loopedList.length;
+                  playingMovie.currentPage =
+                      index % playingMovie.loopedList.length;
                 },
                 itemBuilder: (context, index) {
                   final movie = HomeImage.palingMovieList[index];
                   return InkWell(
-                    onTap: (){
+                    onTap: () {
                       goToDetailsPage(movie);
                     },
                     child: Padding(
@@ -42,7 +42,7 @@ class CustomDiscountCort extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         child: Image.asset(
                           movie['image']!,
-                          width: width,
+                          width: double.infinity,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -51,12 +51,13 @@ class CustomDiscountCort extends StatelessWidget {
                 },
               ),
             );
-          }
+          },
         ),
       ],
     );
   }
+
   void goToDetailsPage(movie) {
-    Get.to(DetailsPage(movie: movie,));
+    Get.to(DetailsPage(movie: movie));
   }
 }

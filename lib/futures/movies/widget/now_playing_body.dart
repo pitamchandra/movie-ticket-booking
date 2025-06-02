@@ -14,7 +14,7 @@ class NowPlayingBody extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 0.48,
+        childAspectRatio: 0.44,
         crossAxisSpacing: 15,
         mainAxisSpacing: 15,
       ),
@@ -28,7 +28,7 @@ class NowPlayingBody extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               child: Image.asset(
                 movie.imageUrl,
-                height: 260,
+                height: screenHeight * 0.3,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),

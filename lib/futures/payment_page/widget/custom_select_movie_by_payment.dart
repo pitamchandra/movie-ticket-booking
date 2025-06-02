@@ -3,14 +3,12 @@ import 'package:flutter/material.dart';
 import '../../home/data/home_image.dart';
 
 class CustomselectMovieByPayment extends StatelessWidget {
-
-
-  const CustomselectMovieByPayment({
-    super.key,
-  });
+  const CustomselectMovieByPayment({super.key});
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     final movieData = HomeImage.palingMovieList[0];
     return Container(
       decoration: BoxDecoration(
@@ -26,13 +24,12 @@ class CustomselectMovieByPayment extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             child: Image.asset(
               movieData["image"],
-              width: 80,
-              height: 120,
+              width: screenWidth * 0.16,
+              height: screenHeight * 0.16,
               fit: BoxFit.cover,
             ),
           ),
-          const SizedBox(width: 12),
-
+          SizedBox(width: screenWidth * 0.02),
           // Movie Details
           Expanded(
             child: Column(
@@ -47,47 +44,64 @@ class CustomselectMovieByPayment extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
+                SizedBox(height: screenHeight * 0.01),
 
                 // Genres
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Icon(Icons.category, size: 16, color: Colors.white70),
-                    const SizedBox(width: 6),
+                    SizedBox(width: screenWidth * 0.01),
                     Expanded(
                       child: Text(
                         "sdkjf",
-                        style: const TextStyle(color: Colors.white70, fontSize: 12),
+                        style: const TextStyle(
+                          color: Colors.white70,
+                          fontSize: 12,
+                        ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 6),
+                SizedBox(height: screenHeight * 0.01),
 
                 // Venue
                 Row(
                   children: [
-                    const Icon(Icons.location_on, size: 16, color: Colors.white70),
-                    const SizedBox(width: 6),
+                    const Icon(
+                      Icons.location_on,
+                      size: 16,
+                      color: Colors.white70,
+                    ),
+                    SizedBox(width: screenWidth * 0.01),
                     Expanded(
                       child: Text(
-                      "sdkjsd",
-                        style: const TextStyle(color: Colors.white70, fontSize: 12),
+                        "sdkjsd",
+                        style: const TextStyle(
+                          color: Colors.white70,
+                          fontSize: 12,
+                        ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 6),
+                SizedBox(height: screenHeight * 0.01),
 
                 // Date & Time
                 Row(
                   children: [
-                    const Icon(Icons.access_time, size: 16, color: Colors.white70),
-                    const SizedBox(width: 6),
+                    const Icon(
+                      Icons.access_time,
+                      size: 16,
+                      color: Colors.white70,
+                    ),
+                    SizedBox(width: screenWidth * 0.01),
                     Text(
                       "10.12.2022 • 14:15",
-                      style: const TextStyle(color: Colors.white70, fontSize: 12),
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 12,
+                      ),
                     ),
                   ],
                 ),

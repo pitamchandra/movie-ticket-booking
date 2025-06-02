@@ -17,14 +17,17 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         elevation: 0,
         backgroundColor: color,
-        minimumSize: const Size(398, 56),
-        maximumSize: const Size(398, 56),
+        minimumSize: Size(screenHeight * 0.55, screenWidth * 0.15),
+        maximumSize: Size(screenHeight * 0.55, screenWidth * 0.15),
         shape: RoundedRectangleBorder(
-          side: BorderSide(width: 1, color: Colors.white),
+          side: BorderSide(width: screenWidth * 0.005, color: Colors.white),
           borderRadius: BorderRadius.circular(64),
         ),
       ),
