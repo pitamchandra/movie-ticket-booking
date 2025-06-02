@@ -19,6 +19,7 @@ class _ConfirmOtpState extends State<ConfirmOtp> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -26,7 +27,7 @@ class _ConfirmOtpState extends State<ConfirmOtp> {
           onPressed: () {
             Get.back();
           },
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back, size: 20),
         ),
       ),
       body: SingleChildScrollView(
@@ -134,11 +135,11 @@ class _ConfirmOtpState extends State<ConfirmOtp> {
                 textColor: Colors.black,
               ),
 
-              SizedBox(height: screenHeight * 0.25),
+              SizedBox(height: screenHeight * 0.22),
               Center(
                 child: Container(
-                  width: 153,
-                  height: 5,
+                  height: screenHeight * 0.003,
+                  width: screenWidth * 0.4,
                   color:
                       _themeController.isDarkMode == false
                           ? Colors.black

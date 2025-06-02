@@ -5,19 +5,21 @@ class TicketDetailsSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     const textColor = Colors.black87;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Divider(thickness: 1),
-        const SizedBox(height: 12),
+        Divider(thickness: 1),
+        SizedBox(height: screenHeight * 0.03),
 
         // Price
         Row(
-          children: const [
+          children: [
             Icon(Icons.attach_money, size: 20, color: textColor),
-            SizedBox(width: 6),
+            SizedBox(width: screenWidth * 0.02),
             Text(
               '210.000 VND',
               style: TextStyle(
@@ -28,17 +30,16 @@ class TicketDetailsSection extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 12),
-
+        SizedBox(height: screenHeight * 0.02),
         // Location with label
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Icon(Icons.location_on, size: 22, color: textColor),
-            const SizedBox(width: 6),
+            SizedBox(width: screenWidth * 0.01),
             Expanded(
               child: RichText(
-                text: const TextSpan(
+                text: TextSpan(
                   children: [
                     TextSpan(
                       text: 'Vincom Ocean Park ',
@@ -53,15 +54,18 @@ class TicketDetailsSection extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.only(left: 4),
                         child: Image(
-                          image: NetworkImage('https://static.vecteezy.com/system/resources/previews/005/663/514/origin'
-                              'al/ticket-logo-or-icon-design-vector.jpg'),fit: BoxFit.cover,
-                          height: 20,
+                          image: NetworkImage(
+                            'https://static.vecteezy.com/system/resources/previews/005/663/514/origin'
+                            'al/ticket-logo-or-icon-design-vector.jpg',
+                          ),
+                          fit: BoxFit.cover,
+                          height: screenHeight * 0.07,
                         ),
                       ),
                     ),
                     TextSpan(
                       text:
-                      '\n4th floor, Vincom Ocean Park, Da Ton, Gia Lam, Ha Noi',
+                          '\n4th floor, Vincom Ocean Park, Da Ton, Gia Lam, Ha Noi',
                       style: TextStyle(
                         fontSize: 14,
                         color: textColor,
@@ -74,14 +78,14 @@ class TicketDetailsSection extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(height: 12),
+        SizedBox(height: screenHeight * 0.02),
 
         // QR code instruction
         Row(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const [
+          children: [
             Icon(Icons.qr_code_2, size: 20, color: textColor),
-            SizedBox(width: 6),
+            SizedBox(width: screenWidth * 0.02),
             Expanded(
               child: Text(
                 'Show this QR code to the ticket counter to receive your ticket',
@@ -95,68 +99,64 @@ class TicketDetailsSection extends StatelessWidget {
           ],
         ),
 
-        const SizedBox(height: 8),
+        SizedBox(height: screenHeight * 0.03),
 
+        SizedBox(
+          height: screenHeight * 0.1,
+          child: Stack(
+            children: [
+              // Dashed Line
+              Positioned.fill(child: CustomPaint(painter: DashedLinePainter())),
 
-            SizedBox(
-              height: 30,
-              child: Stack(
-                children: [
-                  // Dashed Line
-                  Positioned.fill(
-                    child: CustomPaint(
-                      painter: DashedLinePainter(),
+              // Left semicircle
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Container(
+                  width: 30,
+                  height: 30,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
                     ),
                   ),
-
-                  // Left semicircle
-                  Align(
-                    alignment: Alignment.centerLeft,
-                    child: Container(
-                      width: 30,
-                      height: 30,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(15),
-                          bottomRight: Radius.circular(15),
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  // Right semicircle
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                      width: 30,
-                      height: 30,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(15),
-                          bottomLeft: Radius.circular(15),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
 
-        )
+              // Right semicircle
+              Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  width: 30,
+                  height: 30,
+                  decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15),
+                      bottomLeft: Radius.circular(15),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ],
     );
   }
 }
+
 class DashedLinePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     const dashWidth = 5.0;
     const dashSpace = 5.0;
     double startX = 30; // left cutout width
-    final paint = Paint()
-      ..color = Colors.grey
-      ..strokeWidth = 1;
+    final paint =
+        Paint()
+          ..color = Colors.grey
+          ..strokeWidth = 1;
 
     while (startX < size.width - 30) {
       canvas.drawLine(

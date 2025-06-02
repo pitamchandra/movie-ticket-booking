@@ -18,7 +18,7 @@ class _SingInState extends State<SingIn> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -75,7 +75,7 @@ class _SingInState extends State<SingIn> {
                   },
                 ),
 
-                SizedBox(height: screenHeight * 0.04),
+                SizedBox(height: screenHeight * 0.05),
                 CustomButton(
                   buttonText: "continue".tr,
                   color: Color(0xffFCC434),
@@ -84,19 +84,19 @@ class _SingInState extends State<SingIn> {
                   },
                   textColor: Colors.black,
                 ),
-                SizedBox(height: screenHeight * 0.2),
+                SizedBox(height: screenHeight * 0.18),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Container(
-                      width: 116,
-                      height: 1,
+                      width: screenWidth * 0.24,
+                      height: screenHeight * 0.002,
                       color:
                           _themeController.isDarkMode == false
                               ? Colors.black
                               : Colors.white,
                     ),
-                    SizedBox(width: 5),
+                    SizedBox(width: screenWidth * 0.02),
                     Text(
                       "or_continue_with".tr,
                       style: TextStyle(
@@ -104,10 +104,10 @@ class _SingInState extends State<SingIn> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    SizedBox(width: 5),
+                    SizedBox(width: screenWidth * 0.02),
                     Container(
-                      width: 116,
-                      height: 1,
+                      width: screenWidth * 0.24,
+                      height: screenHeight * 0.002,
                       color:
                           _themeController.isDarkMode == false
                               ? Colors.black
@@ -140,8 +140,8 @@ class _SingInState extends State<SingIn> {
                 ),
                 SizedBox(height: screenHeight * 0.05),
                 Container(
-                  width: 153,
-                  height: 5,
+                  height: screenHeight * 0.003,
+                  width: screenWidth * 0.4,
                   color:
                       _themeController.isDarkMode == false
                           ? Colors.black

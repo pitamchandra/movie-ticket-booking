@@ -18,6 +18,7 @@ class _SignUPState extends State<SignUP> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
       appBar: AppBar(
@@ -68,27 +69,27 @@ class _SignUPState extends State<SignUP> {
                 },
                 textColor: Colors.black,
               ),
-              SizedBox(height: screenHeight * 0.28),
+              SizedBox(height: screenHeight * 0.25),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    width: 116,
-                    height: 1,
+                    width: screenWidth * 0.24,
+                    height: screenHeight * 0.002,
                     color:
                         _themeController.isDarkMode == false
                             ? Colors.black
                             : Colors.white,
                   ),
-                  SizedBox(width: 5),
+                  SizedBox(width: screenWidth * 0.02),
                   Text(
                     "or_continue_with".tr,
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                   ),
-                  SizedBox(width: 5),
+                  SizedBox(width: screenWidth * 0.02),
                   Container(
-                    width: 116,
-                    height: 1,
+                    width: screenWidth * 0.24,
+                    height: screenHeight * 0.002,
                     color:
                         _themeController.isDarkMode == false
                             ? Colors.black
@@ -119,10 +120,10 @@ class _SignUPState extends State<SignUP> {
                   color: Color(0xFFB3B3B3),
                 ),
               ),
-              SizedBox(height: screenHeight * 0.05),
+              SizedBox(height: screenHeight * 0.06),
               Container(
-                width: 153,
-                height: 5,
+                height: screenHeight * 0.003,
+                width: screenWidth * 0.4,
                 color:
                     _themeController.isDarkMode == false
                         ? Colors.black
