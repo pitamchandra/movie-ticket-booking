@@ -177,11 +177,13 @@ class _OnbordingState extends State<Onbording> {
                 selectedLanguage: selectedLanguage,
               ),
               SizedBox(height: screenHeight * 0.08),
-              CustomButton(
-                buttonText: "use_english".tr,
-                color: Color(0xffFCC434),
-                onPressed: () {},
-                textColor: Colors.black,
+              Center(
+                child: CustomButton(
+                  buttonText: "use_english".tr,
+                  color: Color(0xffFCC434),
+                  onPressed: () {},
+                  textColor: Colors.black,
+                ),
               ),
             ],
           ),

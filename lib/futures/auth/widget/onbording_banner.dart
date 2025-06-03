@@ -21,7 +21,7 @@ class OnbordingBanner extends StatelessWidget {
             builder: (controller) {
               return SizedBox(
                 width: screenWidth * 0.8,
-                height: screenHeight * 0.53,
+                height: screenHeight * 0.54,
                 child: PageView.builder(
                   controller: controller.pageController,
                   itemCount: controller.loopedList.length,
@@ -49,7 +49,7 @@ class OnbordingBanner extends StatelessWidget {
                             fontSize: 28,
                             fontWeight: FontWeight.w700,
                           ),
-                          overflow: TextOverflow.ellipsis,
+                          overflow: TextOverflow.fade,
                         ),
                         Text(
                           movie['title']!,
@@ -57,7 +57,7 @@ class OnbordingBanner extends StatelessWidget {
                             fontSize: 16,
                             fontWeight: FontWeight.w400,
                           ),
-                          overflow: TextOverflow.ellipsis,
+                          overflow: TextOverflow.fade,
                         ),
                       ],
                     );

@@ -15,6 +15,7 @@ class DateSeatInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -22,16 +23,26 @@ class DateSeatInfo extends StatelessWidget {
         Row(
           children: [
             const Icon(Icons.calendar_today, size: 28, color: Colors.black87),
-            const SizedBox(width: 8),
+            SizedBox(width: screenWidth * 0.015),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(time,
-                    style: const TextStyle(color: Colors.black,
-                        fontSize: 14, fontWeight: FontWeight.w600)),
-                Text(date,
-                    style: const TextStyle(color: Colors.black,
-                        fontSize: 14, fontWeight: FontWeight.w400)),
+                Text(
+                  time,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  date,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
               ],
             ),
           ],
@@ -41,16 +52,26 @@ class DateSeatInfo extends StatelessWidget {
         Row(
           children: [
             const Icon(Icons.event_seat, size: 28, color: Colors.black87),
-            const SizedBox(width: 8),
+            SizedBox(width: screenWidth * 0.015),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(section,
-                    style: const TextStyle(color: Colors.black,
-                        fontSize: 14, fontWeight: FontWeight.w600)),
-                Text("Seat $seats",
-                    style: const TextStyle(color: Colors.black,
-                        fontSize: 14, fontWeight: FontWeight.w400)),
+                Text(
+                  section,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                Text(
+                  "Seat $seats",
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
               ],
             ),
           ],

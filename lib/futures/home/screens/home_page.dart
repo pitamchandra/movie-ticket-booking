@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-            children: [
+            children: const [
               HomeTupperText(),
               HomeSearchBar(),
               PlayingMoviePageView(),

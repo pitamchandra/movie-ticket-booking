@@ -42,7 +42,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     CustomDetailsCard(movieData: movieData),
                     SizedBox(height: screenHeight * 0.16),
                     CustomDetailsText(),
-                    SizedBox(height: screenHeight * 0.16),
+                    SizedBox(height: screenHeight * 0.08),
                     CustomDoctorCart(text: "Doctor"),
                     SizedBox(height: screenHeight * 0.08),
                     CustomDoctorCart(text: "Actor"),

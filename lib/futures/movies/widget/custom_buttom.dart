@@ -21,7 +21,7 @@ class CustomButtom extends StatelessWidget {
                   controller.switchTab('now');
                 },
                 child: Container(
-                  height: screenHeight * 0.08,
+                  height: screenHeight * 0.07,
                   width: screenWidth * 0.5,
                   decoration: BoxDecoration(
                     color:
@@ -51,7 +51,7 @@ class CustomButtom extends StatelessWidget {
                   controller.switchTab('soon');
                 },
                 child: Container(
-                  height: screenHeight * 0.08,
+                  height: screenHeight * 0.07,
                   width: screenWidth * 0.5,
                   decoration: BoxDecoration(
                     color:
@@ -66,6 +66,7 @@ class CustomButtom extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 18,
+                        fontFamily: "popines",
                       ),
                     ),
                   ),
