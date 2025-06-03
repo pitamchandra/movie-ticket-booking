@@ -6,6 +6,8 @@ import 'package:movie_ticket_booging/futures/auth/screens/sign_up.dart';
 import 'package:movie_ticket_booging/futures/auth/widget/onbording_banner.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_buttom.dart';
 
+import '../../../core/constants/size_config.dart';
+
 class Onbording extends StatefulWidget {
   const Onbording({super.key});
 
@@ -20,6 +22,7 @@ class _OnbordingState extends State<Onbording> {
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(

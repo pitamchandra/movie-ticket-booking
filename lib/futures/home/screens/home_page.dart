@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../../core/constants/size_config.dart';
 import '../logic/home_color_controller.dart';
 import '../logic/plaing_now_controller.dart';
 import '../widget/custom_coming_soon_list_view.dart';
@@ -21,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   PlayingMovieController _playingMovie = Get.find<PlayingMovieController>();
   @override
   Widget build(BuildContext context) {
+
     // final size = MediaQuery.of(context).size;
     // final width = size.width;
     // final height = size.height;
@@ -45,10 +47,12 @@ class _HomePageState extends State<HomePage> {
       // bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
-
   @override
   void initState() {
+    // TODO: implement initState
     super.initState();
     _playingMovie.startAutoScrollBanner();
   }
+
+
 }

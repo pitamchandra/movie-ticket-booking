@@ -86,6 +86,7 @@ class _SingInState extends State<SingIn> {
               SizedBox(height: screenHeight * 0.2),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.max,
                 children: [
                   Container(
                     width: 116,
