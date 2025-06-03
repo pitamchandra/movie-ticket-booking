@@ -20,7 +20,7 @@ class PlayingMovieController extends GetxController {
 
   void startAutoScrollBanner() {
     try {
-      _autoScrollTimer = Timer.periodic(Duration(seconds: 2), (timer) {
+      _autoScrollTimer = Timer.periodic(Duration(seconds: 5), (timer) {
         if (pageController.hasClients) {
           currentPage++;
           if (currentPage >= loopedList.length) {
@@ -28,8 +28,8 @@ class PlayingMovieController extends GetxController {
           }
           pageController.animateToPage(
             currentPage,
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.easeInCirc,
+            duration: const Duration(seconds: 1),
+            curve: Curves.fastEaseInToSlowEaseOut,
           );
         }
       });

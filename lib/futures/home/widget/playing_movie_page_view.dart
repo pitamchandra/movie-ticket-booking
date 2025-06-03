@@ -21,24 +21,23 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig.init(context);
-    double height = SizeConfig.screenHeight;
-    double width = SizeConfig.screenWidth;
+    final size = MediaQuery.of(context).size;
+    final height = size.height;
+    final width = size.width;
+    final bool isDesktop = width > 800;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
+        mainAxisSize: MainAxisSize.max,
         children: [
-          SizedBox(height: 5),
+          SizedBox(height: height * 0.01),
           CustomSeeAllButton(text: "now_playing".tr),
-          Text(height.toString()),
-          Text(width.toString()),
           SizedBox(height: height * 0.02),
           GetBuilder(
             init: _playingMovie,
             builder: (playingMovie) {
               return SizedBox(
-                width: width * 0.8,
-                height: height * 0.7,
+                height:isDesktop? height * 0.8:height*0.7,
                 child: PageView.builder(
                   controller:playingMovie.pageController,
                   itemCount: playingMovie.loopedList.length,
@@ -56,12 +55,14 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Container(
-                            height: height * 0.5,
-                            width: width,
+                            margin: EdgeInsets.symmetric(horizontal: 10),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20),
                               child: Image.asset(
                                 movie['image'],
+                                height:isDesktop? height * 0.65: height * 0.5,
+                                width:isDesktop? width * 0.55: double.infinity,
+
                                 // loopedList[index],
                                 // ✅ correct image path
                                 fit: BoxFit.cover,

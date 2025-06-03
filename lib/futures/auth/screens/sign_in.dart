@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:logger/logger.dart';
 import 'package:movie_ticket_booging/core/utils/theme_changer.dart';
 import 'package:movie_ticket_booging/futures/auth/screens/confirm_otp.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_buttom.dart';
@@ -123,7 +126,7 @@ class _SingInState extends State<SingIn> {
               CustomSocialButton(
                 imagePath: "assets/images/google.png",
                 text: "google".tr,
-                onPressed: () {},
+                onPressed: () {gotoGoolgeSignIn();},
               ),
               SizedBox(height: screenHeight * 0.03),
               Text(
@@ -149,5 +152,28 @@ class _SingInState extends State<SingIn> {
         ),
       ),
     );
+  }
+  void gotoGoolgeSignIn()async{
+    final userCredential = await signInWithGoogle();
+    if (userCredential != null) {
+     Logger().e("Signed in: ${userCredential.additionalUserInfo}");
+  }}
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) return null;
+
+      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } catch (e) {
+      Logger().e("Google Sign-In error: $e");
+      return null;
+    }
   }
 }

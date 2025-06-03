@@ -15,6 +15,7 @@ class CustomDiscountCort extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final width = size.width;
     final height = size.height;
+    final bool isDesktop = width > 800;
     return
       Column(
       mainAxisSize: MainAxisSize.min,
@@ -24,7 +25,7 @@ class CustomDiscountCort extends StatelessWidget {
           init:_playingMovie ,
           builder: (playingMovie) {
             return SizedBox(
-              height: height * 0.28, // একটু বেশি রাখলে safe
+              height:isDesktop? height * 0.7: height * 0.28, // একটু বেশি রাখলে safe
               child: PageView.builder(
                 itemCount:playingMovie.loopedList.length,
                 onPageChanged: (index) {
@@ -40,7 +41,7 @@ class CustomDiscountCort extends StatelessWidget {
                       padding: const EdgeInsets.all(12.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
-                        child: Image.asset(
+                        child:Image.asset(
                           movie['image']!,
                           width: width,
                           fit: BoxFit.cover,

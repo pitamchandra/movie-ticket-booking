@@ -10,20 +10,23 @@ class CustomComingSoonListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final width = size.width;
     final height = size.height;
+    final width = size.width;
+    bool isDesktop = width > 800;
     PlayingMovieController _playingMovie = Get.find<PlayingMovieController>();
     return  Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10,),
       child: Column(
 
         children: [
+      SizedBox(
+      height:isDesktop?height*0.02: 0,),
           CustomSeeAllButton(text: "coming_soon".tr,),
           SizedBox(
-            height: height*0.44,
+            height:isDesktop?height:height*0.44,
             width: width,
             child: ListView.builder(
-              scrollDirection: Axis.horizontal,
+              scrollDirection:isDesktop? Axis.vertical: Axis.horizontal,
                 itemBuilder: (context, index) {
                   final movie = _playingMovie.loopedList[index];
                   return InkWell(
