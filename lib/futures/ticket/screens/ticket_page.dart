@@ -15,7 +15,7 @@ class _TicketPageState extends State<TicketPage> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
-    // double screenWidth = MediaQuery.of(context).size.width;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -28,15 +28,15 @@ class _TicketPageState extends State<TicketPage> {
       body: Obx(() {
         return ListView.builder(
           itemCount: _ticketController.tickets.length,
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(16),
           itemBuilder: (context, index) {
             final ticket = _ticketController.tickets[index];
             return InkWell(
-              onTap: (){
+              onTap: () {
                 goToPaymentPage();
               },
               child: Container(
-                margin: const EdgeInsets.only(bottom: 16),
+                margin: EdgeInsets.only(bottom: 16),
                 decoration: BoxDecoration(
                   color: Color(0xFF1C1C1C),
                   borderRadius: BorderRadius.circular(12),
@@ -44,20 +44,20 @@ class _TicketPageState extends State<TicketPage> {
                 child: Row(
                   children: [
                     ClipRRect(
-                      borderRadius: const BorderRadius.only(
+                      borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(12),
                         bottomLeft: Radius.circular(12),
                       ),
                       child: Image.asset(
                         ticket.imageUrl,
-                        width: 100,
-                        height: 140,
+                        width: screenWidth * 0.3,
+                        height: screenHeight * 0.15,
                         fit: BoxFit.cover,
                       ),
                     ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(
+                        padding: EdgeInsets.symmetric(
                           horizontal: 12,
                           vertical: 12,
                         ),
@@ -68,7 +68,7 @@ class _TicketPageState extends State<TicketPage> {
                               ticket.title,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
@@ -82,7 +82,7 @@ class _TicketPageState extends State<TicketPage> {
                                   color: Colors.white54,
                                   size: 16,
                                 ),
-                                const SizedBox(width: 4),
+                                SizedBox(width: screenWidth * 0.01),
                                 Text(
                                   ticket.duration,
                                   style: const TextStyle(
@@ -100,7 +100,7 @@ class _TicketPageState extends State<TicketPage> {
                                   color: Colors.white54,
                                   size: 16,
                                 ),
-                                const SizedBox(width: 4),
+                                SizedBox(width: screenWidth * 0.01),
                                 Text(
                                   ticket.location,
                                   style: const TextStyle(
@@ -123,7 +123,8 @@ class _TicketPageState extends State<TicketPage> {
       }),
     );
   }
-  void goToPaymentPage(){
+
+  void goToPaymentPage() {
     Get.to(MovieTicketPage());
   }
 }
