@@ -75,6 +75,7 @@ class _SingInState extends State<SingIn> {
                   },
                 ),
 
+
                 SizedBox(height: screenHeight * 0.05),
                 CustomButton(
                   buttonText: "continue".tr,
@@ -120,7 +121,7 @@ class _SingInState extends State<SingIn> {
                   imagePath: "assets/images/facebook.png",
                   text: "facebook".tr,
                   onPressed: () {},
-                ),
+
 
                 SizedBox(height: screenHeight * 0.02),
                 CustomSocialButton(
