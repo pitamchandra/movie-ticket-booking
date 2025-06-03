@@ -10,20 +10,18 @@ class OnbordingBanner extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final width = size.width;
-    final height = size.height;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
-
           GetBuilder<OnbordingController>(
             builder: (controller) {
               return SizedBox(
-                width: width * 0.8,
-                height: height * 0.53,
+                width: screenWidth * 0.8,
+                height: screenHeight * 0.53,
                 child: PageView.builder(
                   controller: controller.pageController,
                   itemCount: controller.loopedList.length,
@@ -39,8 +37,8 @@ class OnbordingBanner extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                           child: Image.asset(
                             movie['image']!,
-                            height: 330,
-                            width: 330,
+                            width: screenWidth * 0.9,
+                            height: screenHeight * 0.44,
                             fit: BoxFit.cover,
                           ),
                         ),

@@ -22,10 +22,6 @@ class _HomePageState extends State<HomePage> {
   PlayingMovieController _playingMovie = Get.find<PlayingMovieController>();
   @override
   Widget build(BuildContext context) {
-
-    // final size = MediaQuery.of(context).size;
-    // final width = size.width;
-    // final height = size.height;
     return Scaffold(
       backgroundColor: HomeColorController.backgroundColor(context),
       body: SafeArea(

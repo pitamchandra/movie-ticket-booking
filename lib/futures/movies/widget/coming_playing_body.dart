@@ -8,11 +8,14 @@ class ComingPlayingBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return GridView.builder(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: 0.55,
+        childAspectRatio: 0.45,
         crossAxisSpacing: 15,
         mainAxisSpacing: 15,
       ),
@@ -26,12 +29,12 @@ class ComingPlayingBody extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               child: Image.asset(
                 movie.imageUrl,
-                height: 200,
+                height: screenHeight * 0.3,
                 width: double.infinity,
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(height: 6),
+            SizedBox(height: screenHeight * 0.01),
             Text(
               movie.title,
               maxLines: 2,
@@ -42,18 +45,18 @@ class ComingPlayingBody extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: screenHeight * 0.01),
             Row(
               children: [
                 const Icon(Icons.calendar_today, color: Colors.amber, size: 14),
-                const SizedBox(width: 4),
+                SizedBox(width: screenWidth * 0.005),
                 Text(
                   movie.date,
                   style: const TextStyle(color: Colors.white70, fontSize: 12),
                 ),
               ],
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: screenHeight * 0.01),
             Text(
               movie.adventure,
               style: const TextStyle(color: Colors.white70, fontSize: 12),
