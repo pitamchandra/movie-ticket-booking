@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_utils/get_utils.dart';
+import 'package:logger/logger.dart';
+import 'package:movie_ticket_booging/core/model/users_info.dart';
+import 'package:movie_ticket_booging/core/utils/data_get.dart';
 import 'package:movie_ticket_booging/futures/profile/widget/personal_demo.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -10,6 +13,24 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   bool _switchValue = true;
+  late Future<UserModel?> _userFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _userFuture = dataLoading();
+  }
+
+  Future<UserModel?> dataLoading() async {
+    final user = await DataGet.dataGet();
+    if (user != null) {
+      Logger().d("User name: ${user.email}");
+    } else {
+      Logger().d("No user data found");
+    }
+    return user;
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -19,7 +40,21 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Column(
           children: [
             SizedBox(height: screenHeight * 0.07),
-            PersonalDemo(),
+
+            /// Show user info using FutureBuilder
+            FutureBuilder<UserModel?>(
+              future: _userFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                } else if (snapshot.hasData) {
+                  return PersonalDemo(user: snapshot.data!);
+                } else {
+                  return Text("No user data found");
+                }
+              },
+            ),
+
             SizedBox(height: screenHeight * 0.04),
             Expanded(
               child: ListView(
@@ -60,7 +95,6 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
-
   Widget _buildSettingsItem({
     required IconData icon,
     required String text,
@@ -77,7 +111,6 @@ class _ProfilePageState extends State<ProfilePage> {
         size: 24,
         color: Color(0xFFDEDEDE),
       ),
-
       onTap: onTap,
     );
   }
