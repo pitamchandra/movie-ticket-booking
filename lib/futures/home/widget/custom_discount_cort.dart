@@ -22,12 +22,12 @@ class CustomDiscountCort extends StatelessWidget {
       children: [
         CustomSeeAllButton(text: "discount".tr),
         GetBuilder(
-          init:_playingMovie ,
+          init: _playingMovie,
           builder: (playingMovie) {
             return SizedBox(
               height:isDesktop? height * 0.7: height * 0.28, // একটু বেশি রাখলে safe
               child: PageView.builder(
-                itemCount:playingMovie.loopedList.length,
+                itemCount: playingMovie.loopedList.length,
                 onPageChanged: (index) {
                   playingMovie.currentPage= index % playingMovie.loopedList.length;
                 },
@@ -52,12 +52,13 @@ class CustomDiscountCort extends StatelessWidget {
                 },
               ),
             );
-          }
+          },
         ),
       ],
     );
   }
+
   void goToDetailsPage(movie) {
-    Get.to(DetailsPage(movie: movie,));
+    Get.to(DetailsPage(movie: movie));
   }
 }

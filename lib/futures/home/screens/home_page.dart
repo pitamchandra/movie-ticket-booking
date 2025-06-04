@@ -20,14 +20,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final PlayingMovieController _playingMovie = Get.find<PlayingMovieController>();
-
-  @override
-  void initState() {
-    super.initState();
-    _playingMovie.startAutoScrollBanner();
-  }
-
+  PlayingMovieController _playingMovie = Get.find<PlayingMovieController>();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -41,7 +34,7 @@ class _HomePageState extends State<HomePage> {
         child: SingleChildScrollView(
           child: isDesktop
               ? CustomDesktopPage() : Column(
-            children: [
+            children: const [
               HomeTupperText(),
               HomeSearchBar(),
               PlayingMoviePageView(),

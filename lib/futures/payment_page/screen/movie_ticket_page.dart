@@ -4,30 +4,30 @@ import 'package:flutter/material.dart';
 import '../widget/custom_select_movie_by_payment.dart';
 import '../widget/date_seat_info.dart';
 import '../widget/ticket_details_section.dart';
+
 class MovieTicketPage extends StatelessWidget {
   const MovieTicketPage({super.key});
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
-    final height = size.height;
-    final width = size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: Center(
           child: Container(
-            width: width*0.82,
-            height: height*0.7,
+            width: screenWidth * 0.82,
+            height: screenHeight * 0.7,
             margin: const EdgeInsets.all(16),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(20),
-              boxShadow: const [
+              boxShadow: [
                 BoxShadow(
                   color: Colors.black26,
                   blurRadius: 12,
                   offset: Offset(0, 4),
-                )
+                ),
               ],
             ),
             child: Column(
@@ -40,14 +40,11 @@ class MovieTicketPage extends StatelessWidget {
                   seats: 'H7, H8',
                 ),
                 TicketDetailsSection(),
-            BarcodeWidget(
-              barcode: Barcode.code128(),
-              data: 'Hello Flutter',
-              height: height*0.13,
-
-            )
-
-
+                BarcodeWidget(
+                  barcode: Barcode.code128(),
+                  data: 'Hello Flutter',
+                  height: screenHeight * 0.13,
+                ),
               ],
             ),
           ),

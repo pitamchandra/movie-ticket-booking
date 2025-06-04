@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../details_page/screens/details_page.dart';
 import '../logic/plaing_now_controller.dart';
 import 'custom_see_all_button.dart';
+
 class CustomComingSoonListView extends StatelessWidget {
   const CustomComingSoonListView({super.key});
 
@@ -13,11 +14,12 @@ class CustomComingSoonListView extends StatelessWidget {
     final height = size.height;
     final width = size.width;
     bool isDesktop = width > 800;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     PlayingMovieController _playingMovie = Get.find<PlayingMovieController>();
     return  Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10,),
       child: Column(
-
         children: [
       SizedBox(
       height:isDesktop?height*0.02: 0,),

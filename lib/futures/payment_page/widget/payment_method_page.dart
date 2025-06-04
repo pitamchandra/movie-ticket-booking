@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../home/data/home_image.dart';
+
 class PaymentMethodSection extends StatefulWidget {
   const PaymentMethodSection({super.key});
 
@@ -15,23 +16,26 @@ class _PaymentMethodSectionState extends State<PaymentMethodSection> {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    final width = size.width;
-    final height = size.height;
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        SizedBox(height:height*0.02,),
+        SizedBox(height: screenHeight * 0.02),
         Align(
           alignment: Alignment.centerLeft,
           child: Text(
             'Payment Method',
-            style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        SizedBox(height: height*0.01,),
+        SizedBox(height: screenHeight * 0.01),
         SizedBox(
-          height: height*0.32,
+          height: screenHeight * 0.32,
           child: ListView.separated(
             itemCount: paymentOptions.length,
             separatorBuilder: (_, __) => const SizedBox(height: 12),
@@ -46,36 +50,47 @@ class _PaymentMethodSectionState extends State<PaymentMethodSection> {
                   decoration: BoxDecoration(
                     color: const Color(0xFF1C1C1C),
                     borderRadius: BorderRadius.circular(12),
-                    border: isSelected
-                        ? Border.all(color: Color(0xFFFFC107), width: 1.5)
-                        : null,
+                    border:
+                        isSelected
+                            ? Border.all(color: Color(0xFFFFC107), width: 1.5)
+                            : null,
                   ),
                   child: Row(
                     children: [
                       Image.asset(
                         option['image'],
-                        height: 36,
-                        width: 36,
+                        height: screenHeight * 0.08,
+                        width: screenWidth * 0.08,
                         fit: BoxFit.contain,
                       ),
-                      const SizedBox(width: 12),
+                      SizedBox(width: screenWidth * 0.03),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
                               option['name'],
-                              style: const TextStyle(color: Colors.white, fontSize: 16),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
                             ),
                             if (option['subtitle'] != null)
                               Text(
                                 option['subtitle'],
-                                style: const TextStyle(color: Colors.white54, fontSize: 12),
+                                style: const TextStyle(
+                                  color: Colors.white54,
+                                  fontSize: 12,
+                                ),
                               ),
                           ],
                         ),
                       ),
-                      const Icon(Icons.arrow_forward_ios, color: Colors.white54, size: 16),
+                      const Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white54,
+                        size: 16,
+                      ),
                     ],
                   ),
                 ),
@@ -107,7 +122,6 @@ class _PaymentMethodSectionState extends State<PaymentMethodSection> {
           ),
         ),
       ],
-    )
-    ;
+    );
   }
 }
