@@ -8,6 +8,7 @@ import '../data/home_image.dart';
 import '../logic/plaing_now_controller.dart';
 import 'custom_see_all_button.dart';
 
+
 class PlayingMoviePageView extends StatefulWidget {
   const PlayingMoviePageView({super.key});
   @override
@@ -20,33 +21,23 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
 
   @override
   Widget build(BuildContext context) {
-
-    SizeConfig.init(context);
-    double height = SizeConfig.screenHeight;
-    double width = SizeConfig.screenWidth;
-
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-
+    final size = MediaQuery.of(context).size;
+    final height = size.height;
+    final width = size.width;
+    final bool isDesktop = width > 800;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
+        mainAxisSize: MainAxisSize.max,
         children: [
-          SizedBox(height: screenHeight * 0.01),
+          SizedBox(height: height * 0.01),
           CustomSeeAllButton(text: "now_playing".tr),
-
-          Text(height.toString()),
-          Text(width.toString()),
-          
-
-          SizedBox(height: screenHeight * 0.02),
-
+          SizedBox(height: height * 0.02),
           GetBuilder(
             init: _playingMovie,
             builder: (playingMovie) {
               return SizedBox(
-                width: screenWidth * 0.8,
-                height: screenHeight * 0.7,
+                height:isDesktop? height * 0.8:height*0.7,
                 child: PageView.builder(
                   controller:playingMovie.pageController,
                   itemCount: playingMovie.loopedList.length,
@@ -57,26 +48,28 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
                   itemBuilder: (context, index) {
                     final movie = playingMovie.loopedList[index];
                     return InkWell(
-                      onTap: () {
+                      onTap: (){
                         goToDetailsPage(movie);
                       },
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Container(
-                            height: screenHeight * 0.5,
-                            width: double.infinity,
+                            margin: EdgeInsets.symmetric(horizontal: 10),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20),
                               child: Image.asset(
                                 movie['image'],
+                                height:isDesktop? height * 0.65: height * 0.5,
+                                width:isDesktop? width * 0.55: double.infinity,
+
                                 // loopedList[index],
                                 // ✅ correct image path
                                 fit: BoxFit.cover,
                               ),
                             ),
                           ),
-                          SizedBox(height: screenHeight * 0.01),
+                          SizedBox(height: height * 0.01),
                           Text(
                             "${movie['name']}",
                             style: TextStyle(
@@ -90,7 +83,7 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
                             style: TextStyle(fontSize: 20),
                             overflow: TextOverflow.ellipsis,
                           ),
-                          SizedBox(height: screenHeight * 0.01),
+                          SizedBox(height: height * 0.01),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -103,7 +96,7 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
                               Text("${movie['rating']}"),
                             ],
                           ),
-                          SizedBox(height: screenHeight * 0.01),
+                          SizedBox(height: height * 0.01),
                         ],
                       ),
                     );
@@ -140,9 +133,8 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
       ),
     );
   }
-
   void goToDetailsPage(movie) {
-    Get.to(DetailsPage(movie: movie));
+    Get.to(DetailsPage(movie: movie,));
   }
 }
 
