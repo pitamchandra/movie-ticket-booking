@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_ticket_booging/core/utils/theme_changer.dart';
+import 'package:movie_ticket_booging/futures/auth/logic/facebook_controller.dart';
 import 'package:movie_ticket_booging/futures/auth/screens/confirm_otp.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_buttom.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_socalmedia_buttom.dart';
@@ -14,6 +15,8 @@ class SingIn extends StatefulWidget {
 
 class _SingInState extends State<SingIn> {
   ThemeChanger _themeController = Get.put(ThemeChanger());
+
+  FacebookLogic facebookController = Get.put(FacebookLogic());
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -119,7 +122,9 @@ class _SingInState extends State<SingIn> {
                 CustomSocialButton(
                   imagePath: "assets/images/facebook.png",
                   text: "facebook".tr,
-                  onPressed: () {},
+                  onPressed: () {
+                    facebookController.login();
+                  },
                 ),
 
                 SizedBox(height: screenHeight * 0.02),
