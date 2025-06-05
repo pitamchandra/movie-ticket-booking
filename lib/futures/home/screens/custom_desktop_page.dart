@@ -7,7 +7,6 @@ import '../widget/home_tupper_text.dart';
 import '../widget/playing_movie_page_view.dart';
 class CustomDesktopPage extends StatelessWidget {
   const CustomDesktopPage({super.key});
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
