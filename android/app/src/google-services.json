@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1037876935914-1utr21i06v4qr4d09n7jblplo4ib4tq4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.movie_ticket_booging",
+            "certificate_hash": "ab002a6b0471ccd2cac060cfc746f46e1d2ccf8f"
+          }
+        },
+        {
           "client_id": "1037876935914-l51vvrn7di187lo5ses2u97dt7gkdd1u.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "1037876935914-l51vvrn7di187lo5ses2u97dt7gkdd1u.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1037876935914-jlr91e589svb96ps6dmh30hv3s09214a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.movieTicketBooging"
+              }
             }
           ]
         }
