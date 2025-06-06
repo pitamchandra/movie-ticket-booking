@@ -43,8 +43,12 @@ dependencies:
   firebase_storage: ^12.4.6
   firebase_core: ^3.13.1
   barcode_widget: ^2.0.4
+
+  flutter_facebook_auth: ^7.1.2
+
   google_sign_in: ^6.3.0
   firebase_auth:
+
 
 dev_dependencies:
   flutter_test:
