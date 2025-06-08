@@ -4,10 +4,17 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:movie_ticket_booging/core/utils/theme_changer.dart';
+
+import 'package:movie_ticket_booging/futures/auth/logic/sign_in_with_google.dart';
+
 import 'package:movie_ticket_booging/futures/auth/logic/facebook_controller.dart';
+
 import 'package:movie_ticket_booging/futures/auth/screens/confirm_otp.dart';
+import 'package:movie_ticket_booging/futures/home/screens/home_page.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_buttom.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_socalmedia_buttom.dart';
+
+import '../../home/widget/custom_bottom_navigation_bar.dart';
 
 class SingIn extends StatefulWidget {
   const SingIn({super.key});
@@ -193,26 +200,10 @@ class _SingInState extends State<SingIn> {
     );
   }
   void gotoGoolgeSignIn()async{
-    final userCredential = await signInWithGoogle();
+    final userCredential = await SignInWithGoogle.signInWithGoogle();
+
     if (userCredential != null) {
-     Logger().e("Signed in: ${userCredential.additionalUserInfo}");
+     Get.to(CustomBottomNavigationBar());
   }}
-  Future<UserCredential?> signInWithGoogle() async {
-    try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      if (googleUser == null) return null;
 
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-
-      return await FirebaseAuth.instance.signInWithCredential(credential);
-    } catch (e) {
-      Logger().e("Google Sign-In error: $e");
-      return null;
-    }
-  }
 }
