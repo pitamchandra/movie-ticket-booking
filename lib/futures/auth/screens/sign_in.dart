@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:logger/logger.dart';
 import 'package:movie_ticket_booging/core/utils/theme_changer.dart';
 import 'package:movie_ticket_booging/futures/auth/logic/facebook_controller.dart';
 import 'package:movie_ticket_booging/futures/auth/screens/confirm_otp.dart';
@@ -16,7 +19,9 @@ class SingIn extends StatefulWidget {
 class _SingInState extends State<SingIn> {
   ThemeChanger _themeController = Get.put(ThemeChanger());
 
-  FacebookLogic facebookController = Get.put(FacebookLogic());
+  FacebookLoginController facebookController = Get.put(
+    FacebookLoginController(),
+  );
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -87,7 +92,7 @@ class _SingInState extends State<SingIn> {
                   },
                   textColor: Colors.black,
                 ),
-                SizedBox(height: screenHeight * 0.18),
+                SizedBox(height: screenHeight * 0.2),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -122,6 +127,7 @@ class _SingInState extends State<SingIn> {
                 CustomSocialButton(
                   imagePath: "assets/images/facebook.png",
                   text: "facebook".tr,
+
                   onPressed: () {
                     facebookController.login();
                   },
@@ -131,7 +137,9 @@ class _SingInState extends State<SingIn> {
                 CustomSocialButton(
                   imagePath: "assets/images/google.png",
                   text: "google".tr,
-                  onPressed: () {},
+                  onPressed: () {
+                    gotoGoolgeSignIn();
+                  },
                 ),
                 SizedBox(height: screenHeight * 0.03),
                 Text(
@@ -145,8 +153,8 @@ class _SingInState extends State<SingIn> {
                 ),
                 SizedBox(height: screenHeight * 0.05),
                 Container(
-                  height: screenHeight * 0.003,
-                  width: screenWidth * 0.4,
+                  width: 153,
+                  height: 5,
                   color:
                       _themeController.isDarkMode == false
                           ? Colors.black
@@ -158,5 +166,32 @@ class _SingInState extends State<SingIn> {
         ),
       ),
     );
+  }
+
+  void gotoGoolgeSignIn() async {
+    final userCredential = await signInWithGoogle();
+    if (userCredential != null) {
+      Logger().e("Signed in: ${userCredential.additionalUserInfo}");
+    }
+  }
+
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) return null;
+
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } catch (e) {
+      Logger().e("Google Sign-In error: $e");
+      return null;
+    }
   }
 }

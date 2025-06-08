@@ -12,10 +12,12 @@ class CustomDiscountCort extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     PlayingMovieController _playingMovie = Get.find<PlayingMovieController>();
-
-    double screenHeight = MediaQuery.of(context).size.height;
-
-    return Column(
+    final size = MediaQuery.of(context).size;
+    final width = size.width;
+    final height = size.height;
+    final bool isDesktop = width > 800;
+    return
+      Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         CustomSeeAllButton(text: "discount".tr),
@@ -23,26 +25,25 @@ class CustomDiscountCort extends StatelessWidget {
           init: _playingMovie,
           builder: (playingMovie) {
             return SizedBox(
-              height: screenHeight * 0.28, // একটু বেশি রাখলে safe
+              height:isDesktop? height * 0.7: height * 0.28, // একটু বেশি রাখলে safe
               child: PageView.builder(
                 itemCount: playingMovie.loopedList.length,
                 onPageChanged: (index) {
-                  playingMovie.currentPage =
-                      index % playingMovie.loopedList.length;
+                  playingMovie.currentPage= index % playingMovie.loopedList.length;
                 },
                 itemBuilder: (context, index) {
                   final movie = HomeImage.palingMovieList[index];
                   return InkWell(
-                    onTap: () {
+                    onTap: (){
                       goToDetailsPage(movie);
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
-                        child: Image.asset(
+                        child:Image.asset(
                           movie['image']!,
-                          width: double.infinity,
+                          width: width,
                           fit: BoxFit.cover,
                         ),
                       ),

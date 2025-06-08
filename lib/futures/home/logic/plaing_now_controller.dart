@@ -10,25 +10,26 @@ class PlayingMovieController extends GetxController {
   int currentPage = 0;
   Timer? _autoScrollTimer;
   final PageController _pageController = PageController();
-  PageController get pageController => _pageController;
+  get pageController => _pageController;
+
   List<Map<String, dynamic>> loopedList = List.generate(
     100,
-    (index) =>
-        HomeImage.palingMovieList[index % HomeImage.palingMovieList.length],
+        (index) =>
+    HomeImage.palingMovieList[index % HomeImage.palingMovieList.length],
   );
 
   void startAutoScrollBanner() {
     try {
-      _autoScrollTimer = Timer.periodic(Duration(seconds: 2), (timer) {
-        if (_pageController.hasClients) {
+      _autoScrollTimer = Timer.periodic(Duration(seconds: 5), (timer) {
+        if (pageController.hasClients) {
           currentPage++;
           if (currentPage >= loopedList.length) {
             currentPage = 0;
           }
-          _pageController.animateToPage(
+          pageController.animateToPage(
             currentPage,
-            duration: const Duration(milliseconds: 500),
-            curve: Curves.easeInCirc,
+            duration: const Duration(seconds: 1),
+            curve: Curves.fastEaseInToSlowEaseOut,
           );
         }
       });
@@ -40,19 +41,5 @@ class PlayingMovieController extends GetxController {
 
   void stopAutoScrollBanner() {
     _autoScrollTimer?.cancel();
-  }
-
-  @override
-  void onClose() {
-    stopAutoScrollBanner();
-    _pageController.dispose();
-    super.onClose();
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-
-    loopedList;
   }
 }

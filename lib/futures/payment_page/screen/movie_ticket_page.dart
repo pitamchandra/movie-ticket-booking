@@ -43,7 +43,7 @@ class MovieTicketPage extends StatelessWidget {
                 BarcodeWidget(
                   barcode: Barcode.code128(),
                   data: 'Hello Flutter',
-                  height: screenHeight * 0.13,
+                  height: screenHeight * 0.12,
                 ),
               ],
             ),

@@ -15,7 +15,10 @@ class SignUP extends StatefulWidget {
 
 class _SignUPState extends State<SignUP> {
   ThemeChanger _themeController = Get.put(ThemeChanger());
-  FacebookLogic facebookController = Get.put(FacebookLogic());
+  FacebookLoginController facebookController = Get.put(
+    FacebookLoginController(),
+  );
+  FacebookLoginController controller = Get.put(FacebookLoginController());
 
   final _formKey = GlobalKey<FormState>();
   @override
@@ -64,6 +67,28 @@ class _SignUPState extends State<SignUP> {
                 ),
               ),
               SizedBox(height: screenHeight * 0.04),
+
+              Center(
+                child: Obx(
+                  () => ElevatedButton(
+                    onPressed:
+                        controller.checking.value
+                            ? null
+                            : () => controller.login(),
+                    child:
+                        controller.checking.value
+                            ? SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 2,
+                              ),
+                            )
+                            : Text("Login with Facebook"),
+                  ),
+                ),
+              ),
               CustomButton(
                 buttonText: "continue".tr,
                 color: Color(0xffFCC434),
