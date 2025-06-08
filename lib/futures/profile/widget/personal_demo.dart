@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:movie_ticket_booging/core/model/users_info.dart';
 
 class PersonalDemo extends StatelessWidget {
-  const PersonalDemo({super.key});
+  UserModel user;
+   PersonalDemo({super.key,required this.user});
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +13,8 @@ class PersonalDemo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(
-          "assets/images/profile.png",
+        Image.network(
+          "${user.profile.picture}",
           height: 90,
           width: 90,
           fit: BoxFit.cover,
@@ -23,7 +25,7 @@ class PersonalDemo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              "angelina".tr,
+              "${user.profile.name}",
               style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
             ),
             SizedBox(height: 5),
@@ -46,7 +48,7 @@ class PersonalDemo extends StatelessWidget {
                 Icon(Icons.email, size: 20, color: Color(0xFFDEDEDE)),
                 SizedBox(width: 10),
                 Text(
-                  "angelina@example.com",
+                  "${user.email}",
                   style: TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 14,

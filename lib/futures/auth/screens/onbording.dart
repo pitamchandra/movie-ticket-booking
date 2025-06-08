@@ -5,6 +5,9 @@ import 'package:movie_ticket_booging/futures/auth/screens/sign_in.dart';
 import 'package:movie_ticket_booging/futures/auth/screens/sign_up.dart';
 import 'package:movie_ticket_booging/futures/auth/widget/onbording_banner.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_buttom.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../home/widget/custom_bottom_navigation_bar.dart';
 
 class Onbording extends StatefulWidget {
   const Onbording({super.key});
@@ -187,6 +190,21 @@ class _OnbordingState extends State<Onbording> {
         );
       },
     );
+  }
+
+  Future checkLoginStatus() async {
+    SharedPreferences _pref = await SharedPreferences.getInstance();
+    String? email = _pref.getString("email");
+    if (email != null) {
+      return Get.to(CustomBottomNavigationBar());
+    }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    checkLoginStatus();
   }
 }
 

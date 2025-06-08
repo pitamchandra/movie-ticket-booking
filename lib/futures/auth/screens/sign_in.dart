@@ -5,9 +5,12 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:movie_ticket_booging/core/utils/theme_changer.dart';
 import 'package:movie_ticket_booging/futures/auth/logic/facebook_controller.dart';
+import 'package:movie_ticket_booging/futures/auth/logic/sign_in_with_google.dart';
 import 'package:movie_ticket_booging/futures/auth/screens/confirm_otp.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_buttom.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_socalmedia_buttom.dart';
+
+import '../../home/widget/custom_bottom_navigation_bar.dart';
 
 class SingIn extends StatefulWidget {
   const SingIn({super.key});
@@ -134,9 +137,29 @@ class _SingInState extends State<SingIn> {
                 CustomSocialButton(
                   imagePath: "assets/images/facebook.png",
                   text: "facebook".tr,
+
                   onPressed: () {
                     facebookController.loginWithFacebook();
                   },
+                ),
+
+                SizedBox(height: screenHeight * 0.02),
+                CustomSocialButton(
+                  imagePath: "assets/images/google.png",
+                  text: "google".tr,
+                  onPressed: () {
+                    gotoGoolgeSignIn();
+                  },
+                ),
+                SizedBox(height: screenHeight * 0.03),
+                Text(
+                  textAlign: TextAlign.center,
+                  "privacy_policy".tr,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xFFB3B3B3),
+                  ),
                 ),
                 SizedBox(height: screenHeight * 0.02),
                 CustomSocialButton(
@@ -173,13 +196,6 @@ class _SingInState extends State<SingIn> {
     );
   }
 
-  void gotoGoolgeSignIn() async {
-    final userCredential = await signInWithGoogle();
-    if (userCredential != null) {
-      Logger().e("Signed in: ${userCredential.additionalUserInfo}");
-    }
-  }
-
   Future<UserCredential?> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
@@ -197,6 +213,21 @@ class _SingInState extends State<SingIn> {
     } catch (e) {
       Logger().e("Google Sign-In error: $e");
       return null;
+    }
+  }
+
+  // void gotoGoolgeSignIn() async {
+  //   final userCredential = await signInWithGoogle();
+  //   if (userCredential != null) {
+  //     Logger().e("Signed in: ${userCredential.additionalUserInfo}");
+  //   }
+  // }
+
+  void gotoGoolgeSignIn() async {
+    final userCredential = await SignInWithGoogle.signInWithGoogle();
+
+    if (userCredential != null) {
+      Get.to(CustomBottomNavigationBar());
     }
   }
 }
