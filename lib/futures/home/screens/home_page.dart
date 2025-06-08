@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../core/constants/size_config.dart';
 import '../logic/home_color_controller.dart';
 import '../logic/plaing_now_controller.dart';
 import '../widget/custom_coming_soon_list_view.dart';
@@ -32,21 +31,22 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: HomeColorController.backgroundColor(context),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: isDesktop
-              ? CustomDesktopPage() : Column(
-            children: const [
-              HomeTupperText(),
-              HomeSearchBar(),
-              PlayingMoviePageView(),
-              CustomComingSoonListView(),
-              CustomDiscountCort(),
-              CustomServices(),
-              CustomMovieNews(),
-            ],
-          ),
+          child:
+              isDesktop
+                  ? CustomDesktopPage()
+                  : Column(
+                    children: const [
+                      HomeTupperText(),
+                      HomeSearchBar(),
+                      PlayingMoviePageView(),
+                      CustomComingSoonListView(),
+                      CustomDiscountCort(),
+                      CustomServices(),
+                      CustomMovieNews(),
+                    ],
+                  ),
         ),
       ),
     );
   }
 }
-
