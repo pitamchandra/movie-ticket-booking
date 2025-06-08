@@ -59,6 +59,9 @@
 //   }
 // }
 
+//old
+
+/*
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
 
@@ -78,5 +81,71 @@ class FacebookLoginController extends GetxController {
       print("Login failed: ${result.status} ${result.message}");
     }
     checking.value = false;
+  }
+}
+*/
+
+import 'dart:convert';
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:movie_ticket_booging/futures/auth/data/facebook_model.dart';
+import 'package:movie_ticket_booging/futures/home/widget/custom_bottom_navigation_bar.dart';
+
+class AuthController extends GetxController {
+  Rxn<FacebookUser> facebookUser = Rxn<FacebookUser>();
+
+  Future<void> loginWithFacebook() async {
+    try {
+      final LoginResult result = await FacebookAuth.instance.login(
+        permissions: ['email', 'public_profile'],
+      );
+
+      if (result.status == LoginStatus.success) {
+        final OAuthCredential facebookAuthCredential =
+            FacebookAuthProvider.credential(result.accessToken!.tokenString);
+
+        // Firebase Auth এ sign in
+        UserCredential userCredential = await FirebaseAuth.instance
+            .signInWithCredential(facebookAuthCredential);
+
+        // Optional: Firebase থেকে ইউজার info নিতে পারো
+        final user = userCredential.user;
+        print("Firebase Logged in as: ${user?.displayName}, ${user?.email}");
+
+        // Navigate to Home Screen
+        Get.to(CustomBottomNavigationBar());
+      } else {
+        Get.snackbar("Login Failed", result.message ?? "Unknown error");
+      }
+    } catch (e) {
+      print("Facebook Login Error: $e");
+      Get.snackbar("Error", "Something went wrong");
+    }
+  }
+
+  Future<void> sendUserToServer(FacebookUser user) async {
+    final url = Uri.parse(
+      "http://your-api.com/users",
+    ); // 🔁 এখানে তোমার API URL বসাও
+
+    final response = await http.post(
+      url,
+      headers: {"Content-Type": "application/json"},
+      body: jsonEncode({
+        "name": user.name,
+        "email": user.email,
+        "fb_id": user.id,
+        "profile_pic": user.profilePic,
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      print("User synced successfully");
+    } else {
+      print("Failed to sync user: ${response.body}");
+    }
   }
 }

@@ -19,9 +19,7 @@ class SingIn extends StatefulWidget {
 class _SingInState extends State<SingIn> {
   ThemeChanger _themeController = Get.put(ThemeChanger());
 
-  FacebookLoginController facebookController = Get.put(
-    FacebookLoginController(),
-  );
+  AuthController facebookController = Get.put(AuthController());
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -124,15 +122,22 @@ class _SingInState extends State<SingIn> {
                   ],
                 ),
                 SizedBox(height: screenHeight * 0.02),
+
+                // CustomSocialButton(
+                //   imagePath: "assets/images/facebook.png",
+                //   text: "facebook".tr,
+
+                //   onPressed: () {
+                //     facebookController.login();
+                //   },
+                // ),
                 CustomSocialButton(
                   imagePath: "assets/images/facebook.png",
                   text: "facebook".tr,
-
                   onPressed: () {
-                    facebookController.login();
+                    facebookController.loginWithFacebook();
                   },
                 ),
-
                 SizedBox(height: screenHeight * 0.02),
                 CustomSocialButton(
                   imagePath: "assets/images/google.png",
