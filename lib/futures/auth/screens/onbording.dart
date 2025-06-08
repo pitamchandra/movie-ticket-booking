@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_ticket_booging/core/utils/theme_changer.dart';
@@ -5,9 +6,11 @@ import 'package:movie_ticket_booging/futures/auth/screens/sign_in.dart';
 import 'package:movie_ticket_booging/futures/auth/screens/sign_up.dart';
 import 'package:movie_ticket_booging/futures/auth/widget/onbording_banner.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_buttom.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../core/constants/size_config.dart';
-
+import '../../home/screens/home_page.dart';
+import '../../home/widget/custom_bottom_navigation_bar.dart';
+import '../logic/sign_in_with_google.dart';
 class Onbording extends StatefulWidget {
   const Onbording({super.key});
 
@@ -191,8 +194,20 @@ class _OnbordingState extends State<Onbording> {
       },
     );
   }
+ Future  checkLoginStatus()async{
+   SharedPreferences _pref =await SharedPreferences.getInstance();
+   String? email = _pref.getString("email");
+   if(email != null){
+    return Get.to(CustomBottomNavigationBar());
+   }
+ }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    checkLoginStatus();
+  }
 }
-
 class LanguageTile extends StatelessWidget {
   final String value;
   final String label;
