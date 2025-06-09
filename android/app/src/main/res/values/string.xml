@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">YourAppName</string>
+    <string name="app_name">MovieTicketBooking</string>
 
     <!-- Facebook Login -->
-    <string name="facebook_app_id">1948275869315650</string>
-    <string name="fb_login_protocol_scheme">fb1234</string>
-    <string name="facebook_client_token">7c998c1037195dba3f029070194ec8ac</string>
+    <string name="facebook_app_id">1379344509834976</string>
+    <string name="fb_login_protocol_scheme">fb1379344509834976</string>
+    <string name="facebook_client_token">7644327e57128f6b3d9ae240386e94a7</string>
 </resources>

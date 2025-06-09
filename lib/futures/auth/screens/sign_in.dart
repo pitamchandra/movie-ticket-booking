@@ -4,13 +4,9 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 import 'package:movie_ticket_booging/core/utils/theme_changer.dart';
-
-import 'package:movie_ticket_booging/futures/auth/logic/sign_in_with_google.dart';
-
 import 'package:movie_ticket_booging/futures/auth/logic/facebook_controller.dart';
-
+import 'package:movie_ticket_booging/futures/auth/logic/sign_in_with_google.dart';
 import 'package:movie_ticket_booging/futures/auth/screens/confirm_otp.dart';
-import 'package:movie_ticket_booging/futures/home/screens/home_page.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_buttom.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_socalmedia_buttom.dart';
 
@@ -26,7 +22,7 @@ class SingIn extends StatefulWidget {
 class _SingInState extends State<SingIn> {
   ThemeChanger _themeController = Get.put(ThemeChanger());
 
-  FacebookLogic facebookController = Get.put(FacebookLogic());
+  AuthController facebookController = Get.put(AuthController());
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -88,7 +84,6 @@ class _SingInState extends State<SingIn> {
                   },
                 ),
 
-
                 SizedBox(height: screenHeight * 0.05),
                 CustomButton(
                   buttonText: "continue".tr,
@@ -98,7 +93,7 @@ class _SingInState extends State<SingIn> {
                   },
                   textColor: Colors.black,
                 ),
-                SizedBox(height: screenHeight * 0.18),
+                SizedBox(height: screenHeight * 0.2),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -106,9 +101,9 @@ class _SingInState extends State<SingIn> {
                       width: screenWidth * 0.24,
                       height: screenHeight * 0.002,
                       color:
-                          _themeController.isDarkMode == false
-                              ? Colors.black
-                              : Colors.white,
+                      _themeController.isDarkMode == false
+                          ? Colors.black
+                          : Colors.white,
                     ),
                     SizedBox(width: screenWidth * 0.02),
                     Text(
@@ -123,55 +118,56 @@ class _SingInState extends State<SingIn> {
                       width: screenWidth * 0.24,
                       height: screenHeight * 0.002,
                       color:
-                          _themeController.isDarkMode == false
-                              ? Colors.black
-                              : Colors.white,
+                      _themeController.isDarkMode == false
+                          ? Colors.black
+                          : Colors.white,
                     ),
                   ],
                 ),
                 SizedBox(height: screenHeight * 0.02),
+
+                // CustomSocialButton(
+                //   imagePath: "assets/images/facebook.png",
+                //   text: "facebook".tr,
+
+                //   onPressed: () {
+                //     facebookController.login();
+                //   },
+                // ),
                 CustomSocialButton(
                   imagePath: "assets/images/facebook.png",
                   text: "facebook".tr,
 
                   onPressed: () {
-                    facebookController.login();}
-
-             ),
-
-
-              SizedBox(height: screenHeight * 0.02),
-              CustomSocialButton(
-                imagePath: "assets/images/google.png",
-                text: "google".tr,
-                onPressed: () {gotoGoolgeSignIn();},
-              ),
-              SizedBox(height: screenHeight * 0.03),
-              Text(
-                textAlign: TextAlign.center,
-                "privacy_policy".tr,
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFFB3B3B3),
-
+                    facebookController.loginWithFacebook();
+                  },
                 ),
-              ),
-              SizedBox(height: screenHeight * 0.05),
-              Container(
-                width: 153,
-                height: 5,
-                color:
-                    _themeController.isDarkMode == false
-                        ? Colors.black
-                        : Colors.white,
-              ),
 
                 SizedBox(height: screenHeight * 0.02),
                 CustomSocialButton(
                   imagePath: "assets/images/google.png",
                   text: "google".tr,
-                  onPressed: () {},
+                  onPressed: () {
+                    gotoGoolgeSignIn();
+                  },
+                ),
+                SizedBox(height: screenHeight * 0.03),
+                Text(
+                  textAlign: TextAlign.center,
+                  "privacy_policy".tr,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xFFB3B3B3),
+                  ),
+                ),
+                SizedBox(height: screenHeight * 0.02),
+                CustomSocialButton(
+                  imagePath: "assets/images/google.png",
+                  text: "google".tr,
+                  onPressed: () {
+                    gotoGoolgeSignIn();
+                  },
                 ),
                 SizedBox(height: screenHeight * 0.03),
                 Text(
@@ -185,25 +181,53 @@ class _SingInState extends State<SingIn> {
                 ),
                 SizedBox(height: screenHeight * 0.05),
                 Container(
-                  height: screenHeight * 0.003,
-                  width: screenWidth * 0.4,
+                  width: 153,
+                  height: 5,
                   color:
-                      _themeController.isDarkMode == false
-                          ? Colors.black
-                          : Colors.white,
+                  _themeController.isDarkMode == false
+                      ? Colors.black
+                      : Colors.white,
                 ),
-
-  ])
+              ],
+            ),
           ),
         ),
       ),
     );
   }
-  void gotoGoolgeSignIn()async{
+
+  Future<UserCredential?> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      if (googleUser == null) return null;
+
+      final GoogleSignInAuthentication googleAuth =
+      await googleUser.authentication;
+
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } catch (e) {
+      Logger().e("Google Sign-In error: $e");
+      return null;
+    }
+  }
+
+  // void gotoGoolgeSignIn() async {
+  //   final userCredential = await signInWithGoogle();
+  //   if (userCredential != null) {
+  //     Logger().e("Signed in: ${userCredential.additionalUserInfo}");
+  //   }
+  // }
+
+  void gotoGoolgeSignIn() async {
     final userCredential = await SignInWithGoogle.signInWithGoogle();
 
     if (userCredential != null) {
-     Get.to(CustomBottomNavigationBar());
-  }}
-
+      Get.to(CustomBottomNavigationBar());
+    }
+  }
 }

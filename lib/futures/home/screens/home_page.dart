@@ -27,20 +27,23 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: HomeColorController.backgroundColor(context),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: isDesktop
-              ? CustomDesktopPage() : Column(
-            children: const [
-              HomeTupperText(),
-              HomeSearchBar(),
-              PlayingMoviePageView(),
-              CustomComingSoonListView(),
-              CustomDiscountCort(),
-              CustomServices(),
-              CustomMovieNews(),
-            ],
-          ),
+          child:
+              isDesktop
+                  ? CustomDesktopPage()
+                  : Column(
+                    children: const [
+                      HomeTupperText(),
+                      HomeSearchBar(),
+                      PlayingMoviePageView(),
+                      CustomComingSoonListView(),
+                      CustomDiscountCort(),
+                      CustomServices(),
+                      CustomMovieNews(),
+                    ],
+                  ),
         ),
       ),
     );
   }
+
 }

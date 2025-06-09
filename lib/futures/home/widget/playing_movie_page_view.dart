@@ -3,11 +3,9 @@ import 'package:flutter_rating/flutter_rating.dart';
 import 'package:get/get.dart';
 import 'package:movie_ticket_booging/futures/details_page/screens/details_page.dart';
 
-import '../../../core/constants/size_config.dart';
 import '../data/home_image.dart';
 import '../logic/plaing_now_controller.dart';
 import 'custom_see_all_button.dart';
-
 
 class PlayingMoviePageView extends StatefulWidget {
   const PlayingMoviePageView({super.key});
@@ -15,9 +13,9 @@ class PlayingMoviePageView extends StatefulWidget {
   State<PlayingMoviePageView> createState() => _PlayingMoviePageViewState();
 }
 
-
 class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
-  final PlayingMovieController _playingMovie = Get.find<PlayingMovieController>();
+  final PlayingMovieController _playingMovie =
+      Get.find<PlayingMovieController>();
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +35,9 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
             init: _playingMovie,
             builder: (playingMovie) {
               return SizedBox(
-                height:isDesktop? height * 0.8:height*0.7,
+                height: isDesktop ? height * 0.8 : height * 0.7,
                 child: PageView.builder(
-                  controller:playingMovie.pageController,
+                  controller: playingMovie.pageController,
                   itemCount: playingMovie.loopedList.length,
                   onPageChanged: (index) {
                     playingMovie.currentPage =
@@ -48,7 +46,7 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
                   itemBuilder: (context, index) {
                     final movie = playingMovie.loopedList[index];
                     return InkWell(
-                      onTap: (){
+                      onTap: () {
                         goToDetailsPage(movie);
                       },
                       child: Column(
@@ -60,8 +58,10 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
                               borderRadius: BorderRadius.circular(20),
                               child: Image.asset(
                                 movie['image'],
-                                height:isDesktop? height * 0.65: height * 0.5,
-                                width:isDesktop? width * 0.55: double.infinity,
+                                height:
+                                    isDesktop ? height * 0.65 : height * 0.5,
+                                width:
+                                    isDesktop ? width * 0.55 : double.infinity,
 
                                 // loopedList[index],
                                 // ✅ correct image path
@@ -133,9 +133,8 @@ class _PlayingMoviePageViewState extends State<PlayingMoviePageView> {
       ),
     );
   }
+
   void goToDetailsPage(movie) {
-    Get.to(DetailsPage(movie: movie,));
+    Get.to(DetailsPage(movie: movie));
   }
 }
-
-

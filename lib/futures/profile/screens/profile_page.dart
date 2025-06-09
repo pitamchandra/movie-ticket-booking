@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_utils/get_utils.dart';
+import 'package:get/get.dart';
 import 'package:logger/logger.dart';
 import 'package:movie_ticket_booging/core/model/users_info.dart';
 import 'package:movie_ticket_booging/core/utils/data_get.dart';
@@ -87,6 +87,35 @@ class _ProfilePageState extends State<ProfilePage> {
                     icon: Icons.center_focus_strong,
                     text: "face_touch_id".tr,
                   ),
+
+                  _buildSettingsItem(
+                    icon: Icons.logout,
+                    text: "Logout",
+                    onTap: () {
+                      Get.defaultDialog(
+                        title: "Logout",
+                        middleText: "Are you sure you want to logout?",
+                        textConfirm: "Yes",
+                        textCancel: "No",
+                        //confirmTextColor: Colors.white,
+                        backgroundColor: Colors.grey,
+                        onConfirm: () async {
+                          try {
+                            Get.offAllNamed('/login');
+                            Get.back();
+                          } catch (e) {
+                            Get.back(); // Close the dialog on error too
+                            Get.snackbar(
+                              "Error",
+                              "Logout failed: $e",
+                              backgroundColor: Colors.red,
+                              colorText: Colors.white,
+                            );
+                          }
+                        },
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
@@ -95,6 +124,7 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
     );
   }
+
   Widget _buildSettingsItem({
     required IconData icon,
     required String text,
