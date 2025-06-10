@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:movie_ticket_booging/core/utils/theme_changer.dart';
+import 'package:movie_ticket_booging/futures/auth/logic/facebook_controller.dart';
 import 'package:movie_ticket_booging/futures/auth/screens/confirm_otp.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_buttom.dart';
 import 'package:movie_ticket_booging/shared/widgets/custom_socalmedia_buttom.dart';
@@ -15,7 +16,7 @@ class SignUP extends StatefulWidget {
 class _SignUPState extends State<SignUP> {
   ThemeChanger _themeController = Get.put(ThemeChanger());
   //FacebookLogic facebookController = Get.put(FacebookLogic());
-  //FacebookLoginController controller = Get.put(FacebookLoginController());
+  FacebookLoginController controller = Get.put(FacebookLoginController());
 
   final _formKey = GlobalKey<FormState>();
   @override
@@ -102,11 +103,12 @@ class _SignUPState extends State<SignUP> {
                 ],
               ),
               SizedBox(height: screenHeight * 0.02),
+
               CustomSocialButton(
                 imagePath: "assets/images/facebook.png",
                 text: "facebook".tr,
                 onPressed: () {
-                  // facebookController.login();
+                  controller.login();
                 },
               ),
 

@@ -67,13 +67,15 @@ class _UsernameState extends State<Username> {
                 ),
               ),
               SizedBox(height: screenHeight * 0.25),
-              CustomButton(
-                buttonText: "done".tr,
-                color: Color(0xffFCC434),
-                onPressed: () {
-                  Get.to(CustomBottomNavigationBar());
-                },
-                textColor: Colors.black,
+              Center(
+                child: CustomButton(
+                  buttonText: "done".tr,
+                  color: Color(0xffFCC434),
+                  onPressed: () {
+                    Get.to(CustomBottomNavigationBar());
+                  },
+                  textColor: Colors.black,
+                ),
               ),
 
               SizedBox(height: screenHeight * 0.25),
