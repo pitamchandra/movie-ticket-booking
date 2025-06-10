@@ -22,7 +22,7 @@ class SingIn extends StatefulWidget {
 class _SingInState extends State<SingIn> {
   ThemeChanger _themeController = Get.put(ThemeChanger());
 
-  AuthController facebookController = Get.put(AuthController());
+  FacebookLoginController controller = Get.put(FacebookLoginController());
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -93,7 +93,7 @@ class _SingInState extends State<SingIn> {
                   },
                   textColor: Colors.black,
                 ),
-                SizedBox(height: screenHeight * 0.2),
+                SizedBox(height: screenHeight * 0.25),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -101,9 +101,9 @@ class _SingInState extends State<SingIn> {
                       width: screenWidth * 0.24,
                       height: screenHeight * 0.002,
                       color:
-                      _themeController.isDarkMode == false
-                          ? Colors.black
-                          : Colors.white,
+                          _themeController.isDarkMode == false
+                              ? Colors.black
+                              : Colors.white,
                     ),
                     SizedBox(width: screenWidth * 0.02),
                     Text(
@@ -118,31 +118,31 @@ class _SingInState extends State<SingIn> {
                       width: screenWidth * 0.24,
                       height: screenHeight * 0.002,
                       color:
-                      _themeController.isDarkMode == false
-                          ? Colors.black
-                          : Colors.white,
+                          _themeController.isDarkMode == false
+                              ? Colors.black
+                              : Colors.white,
                     ),
                   ],
                 ),
                 SizedBox(height: screenHeight * 0.02),
+
+                CustomSocialButton(
+                  imagePath: "assets/images/facebook.png",
+                  text: "facebook".tr,
+
+                  onPressed: () {
+                    controller.login();
+                  },
+                ),
 
                 // CustomSocialButton(
                 //   imagePath: "assets/images/facebook.png",
                 //   text: "facebook".tr,
 
                 //   onPressed: () {
-                //     facebookController.login();
+                //     // facebookController.loginWithFacebook();
                 //   },
                 // ),
-                CustomSocialButton(
-                  imagePath: "assets/images/facebook.png",
-                  text: "facebook".tr,
-
-                  onPressed: () {
-                    facebookController.loginWithFacebook();
-                  },
-                ),
-
                 SizedBox(height: screenHeight * 0.02),
                 CustomSocialButton(
                   imagePath: "assets/images/google.png",
@@ -151,7 +151,7 @@ class _SingInState extends State<SingIn> {
                     gotoGoolgeSignIn();
                   },
                 ),
-                SizedBox(height: screenHeight * 0.03),
+                SizedBox(height: screenHeight * 0.05),
                 Text(
                   textAlign: TextAlign.center,
                   "privacy_policy".tr,
@@ -161,32 +161,15 @@ class _SingInState extends State<SingIn> {
                     color: Color(0xFFB3B3B3),
                   ),
                 ),
-                SizedBox(height: screenHeight * 0.02),
-                CustomSocialButton(
-                  imagePath: "assets/images/google.png",
-                  text: "google".tr,
-                  onPressed: () {
-                    gotoGoolgeSignIn();
-                  },
-                ),
-                SizedBox(height: screenHeight * 0.03),
-                Text(
-                  textAlign: TextAlign.center,
-                  "privacy_policy".tr,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    color: Color(0xFFB3B3B3),
-                  ),
-                ),
+
                 SizedBox(height: screenHeight * 0.05),
                 Container(
                   width: 153,
                   height: 5,
                   color:
-                  _themeController.isDarkMode == false
-                      ? Colors.black
-                      : Colors.white,
+                      _themeController.isDarkMode == false
+                          ? Colors.black
+                          : Colors.white,
                 ),
               ],
             ),
@@ -202,7 +185,7 @@ class _SingInState extends State<SingIn> {
       if (googleUser == null) return null;
 
       final GoogleSignInAuthentication googleAuth =
-      await googleUser.authentication;
+          await googleUser.authentication;
 
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
