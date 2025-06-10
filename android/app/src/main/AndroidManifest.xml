@@ -1,7 +1,19 @@
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.movie_ticket_booging">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT"/>
+    <queries>
+        <intent>
+            <action android:name="android.speech.RecognitionService" />
+        </intent>
+    </queries>
 
     <application
         android:name="${applicationName}"
@@ -31,7 +43,7 @@
         <activity
             android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
+            android:label="movie_ticket_booging" />
 
         <activity
             android:name="com.facebook.CustomTabActivity"
@@ -45,8 +57,8 @@
         </activity>
 
         <!-- Facebook SDK Meta-Data -->
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id" />
-        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token" />
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="1379344509834976" />
+        <meta-data android:name="com.facebook.sdk.ClientToken" android:value="7644327e57128f6b3d9ae240386e94a7" />
 
         <!-- Firebase/Play Services (Optional) -->
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />

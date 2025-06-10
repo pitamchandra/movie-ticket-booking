@@ -1,5 +1,4 @@
 // import 'dart:convert';
-
 // import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 // import 'package:get/get.dart';
 // import 'package:movie_ticket_booging/futures/auth/screens/confirm_otp.dart';
@@ -84,9 +83,7 @@ class FacebookLoginController extends GetxController {
   }
 }
 */
-
 import 'dart:convert';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:get/get.dart';
@@ -105,7 +102,7 @@ class AuthController extends GetxController {
 
       if (result.status == LoginStatus.success) {
         final OAuthCredential facebookAuthCredential =
-            FacebookAuthProvider.credential(result.accessToken!.tokenString);
+        FacebookAuthProvider.credential(result.accessToken!.tokenString);
 
         // Firebase Auth এ sign in
         UserCredential userCredential = await FirebaseAuth.instance
@@ -125,7 +122,6 @@ class AuthController extends GetxController {
       Get.snackbar("Error", "Something went wrong");
     }
   }
-
   Future<void> sendUserToServer(FacebookUser user) async {
     final url = Uri.parse(
       "http://your-api.com/users",

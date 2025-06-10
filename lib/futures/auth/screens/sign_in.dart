@@ -101,9 +101,9 @@ class _SingInState extends State<SingIn> {
                       width: screenWidth * 0.24,
                       height: screenHeight * 0.002,
                       color:
-                          _themeController.isDarkMode == false
-                              ? Colors.black
-                              : Colors.white,
+                      _themeController.isDarkMode == false
+                          ? Colors.black
+                          : Colors.white,
                     ),
                     SizedBox(width: screenWidth * 0.02),
                     Text(
@@ -118,9 +118,9 @@ class _SingInState extends State<SingIn> {
                       width: screenWidth * 0.24,
                       height: screenHeight * 0.002,
                       color:
-                          _themeController.isDarkMode == false
-                              ? Colors.black
-                              : Colors.white,
+                      _themeController.isDarkMode == false
+                          ? Colors.black
+                          : Colors.white,
                     ),
                   ],
                 ),
@@ -184,9 +184,9 @@ class _SingInState extends State<SingIn> {
                   width: 153,
                   height: 5,
                   color:
-                      _themeController.isDarkMode == false
-                          ? Colors.black
-                          : Colors.white,
+                  _themeController.isDarkMode == false
+                      ? Colors.black
+                      : Colors.white,
                 ),
               ],
             ),
@@ -202,7 +202,7 @@ class _SingInState extends State<SingIn> {
       if (googleUser == null) return null;
 
       final GoogleSignInAuthentication googleAuth =
-          await googleUser.authentication;
+      await googleUser.authentication;
 
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth.accessToken,
