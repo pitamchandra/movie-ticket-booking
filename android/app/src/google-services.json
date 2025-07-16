@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1037876935914",
+    "project_id": "bloodgroup-d8c5d",
+    "storage_bucket": "bloodgroup-d8c5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037876935914:android:ec5366398830296b316b93",
+        "android_client_info": {
+          "package_name": "com.example.movie_ticket_booging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037876935914-1utr21i06v4qr4d09n7jblplo4ib4tq4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.movie_ticket_booging",
+            "certificate_hash": "ab002a6b0471ccd2cac060cfc746f46e1d2ccf8f"
+          }
+        },
+        {
+          "client_id": "1037876935914-l51vvrn7di187lo5ses2u97dt7gkdd1u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhgumGlogYcaruxJ3KoUlnN708HaVbXgU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1037876935914-l51vvrn7di187lo5ses2u97dt7gkdd1u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1037876935914-jlr91e589svb96ps6dmh30hv3s09214a.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.movieTicketBooging"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
